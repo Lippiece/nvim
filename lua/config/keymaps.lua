@@ -7,4 +7,4 @@
 local tinyca = require("tiny-code-action")
 local map = vim.keymap.set
 
-map("n", "<leader>ca", tinyca.code_action, { desc = "Code Action", noremap = true, silent = true })
+map("n", "<leader>ca", tinyca.code_action, { desc = "Tiny Code Action", noremap = true, silent = true })

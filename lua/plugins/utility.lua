@@ -131,7 +131,7 @@ return {
       local map = vim.keymap.set
       tinyca.setup()
 
-      map("n", "<leader>ca", tinyca.code_action, { desc = "Code Action", noremap = true, silent = true })
+      map("n", "<leader>ca", tinyca.code_action, { desc = "Tiny Code Action", noremap = true, silent = true })
     end,
   },
 }
