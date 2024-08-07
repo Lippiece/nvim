@@ -4,6 +4,8 @@
 -- vim.keymap.set("n", "<leader>ca", function()
 --   require("tiny-code-action").code_action()
 -- end, { noremap = true, silent = true })
+local map = vim.keymap.set
+
 map({ "n", "v" }, "<leader>ca", function()
   require("tiny-code-action").code_action()
-end, { noremap = true, silent = true })
+end, { remap = true, silent = true })
