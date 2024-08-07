@@ -127,7 +127,11 @@ return {
     },
     event = "LspAttach",
     config = function()
-      require("tiny-code-action").setup()
+      local tinyca = require("tiny-code-action")
+      local map = vim.keymap.set
+      tinyca.setup()
+
+      map("n", "<leader>ca", tinyca.code_action, { desc = "Code Action", noremap = true, silent = true })
     end,
   },
 }
