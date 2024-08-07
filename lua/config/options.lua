@@ -25,18 +25,18 @@ if vim.g.neovide then
   vim.opt.sidescrolloff = 15
   vim.g.neovide_transparency = 0.9
 
-  vim.g.neovide_font_hinting = 'none'
-  vim.g.neovide_font_edging = 'subpixelantialias'
+  vim.g.neovide_font_hinting = "none"
+  vim.g.neovide_font_edging = "subpixelantialias"
 
   -- Replace with ctrl+v etc
-  vim.keymap.set('n', '<C-v>', '"+P')         -- Paste normal mode
-  vim.keymap.set('v', '<C-v>', '"+P')         -- Paste visual mode
-  vim.keymap.set('c', '<C-v>', '<C-R>+')      -- Paste command mode
-  vim.keymap.set('i', '<C-v>', '<ESC>l"+Pli') -- Paste insert mode
-  vim.api.nvim_set_keymap('', '<C-v>', '+p<CR>', { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('!', '<C-v>', '<C-R>+', { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('t', '<C-v>', '<C-R>+', { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('v', '<C-v>', '<C-R>+', { noremap = true, silent = true })
+  vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
+  vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
+  vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
+  vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli') -- Paste insert mode
+  vim.api.nvim_set_keymap("", "<C-v>", "+p<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("!", "<C-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("t", "<C-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("v", "<C-v>", "<C-R>+", { noremap = true, silent = true })
 end
 
 -- Autocomplete
@@ -82,4 +82,4 @@ vim.wo.linebreak = true
 -- :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;ABCDEFGHIJKLMNOPQRSTUVWXYZ
 -- langmap should be set in lua below:
 vim.o.langmap =
-"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+  "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:@ZXCVBNM<>,йцукенгшщзхъфывапролджэячсмитьбю;qwertyuiop[]asdfghjkl;'zxcvbnm,."
