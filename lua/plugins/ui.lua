@@ -20,5 +20,14 @@ return {
     opts = {
       hijack_netrw_behavior = "disabled", -- netrw left alone, neo-tree does not handle opening dirs (**for remote editing**)
     },
+    {
+      "mei28/luminate.nvim",
+      event = { "VeryLazy" },
+      config = function()
+        require("luminate").setup({
+          -- if you want to customize, see Usage!
+        })
+      end,
+    },
   },
 }

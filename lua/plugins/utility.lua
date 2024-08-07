@@ -1,5 +1,42 @@
 return {
   {
+    -- {
+    --   "sourcegraph/sg.nvim",
+    --   dependencies = { "nvim-lua/plenary.nvim",
+    --     {
+    --       "hrsh7th/nvim-cmp",
+    --       opts = function(_, opts)
+    --         table.insert(opts.sources, {
+    --           name = "cody",
+    --         })
+    --       end
+    --     }
+    --   },
+    --
+    --   event = "VeryLazy",
+    --
+    --   config = function()
+    --     require("sg").setup({})
+    --
+    --     local cody = require("sg.cody.commands")
+    --
+    --     local map = function(mode, keys, func, desc)
+    --       if desc then
+    --         desc = "CODY: " .. desc
+    --       end
+    --       vim.keymap.set(mode, keys, func, { desc = desc })
+    --     end
+    --
+    --     map("n", "<leader>ac", function()
+    --       local request = {}
+    --       request.row, request.col = unpack(vim.api.nvim_win_get_cursor(0))
+    --       request.filename = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+    --       cody.autocomplete(request, function(data)
+    --         vim.print(data)
+    --       end)
+    --     end, "[a]sk cody to auto[c]omplete")
+    --   end,
+    -- },
     "folke/persistence.nvim",
     event = "BufReadPre",
     opts = { options = vim.opt.sessionoptions:get() },
@@ -61,10 +98,24 @@ return {
 
     event = "CmdlineEnter",
     cmd = "Hypersonic",
-    -- config = function()
-    --   require("hypersonic").setup({})
-    -- end,
-    opts = {}
+    config = function()
+      require("hypersonic").setup({})
+    end,
+    opts = {},
   },
   "akinsho/git-conflict.nvim",
+  {
+    "luckasRanarison/nvim-devdocs",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    keys = {
+      { "<leader>hc", "<cmd>DevdocsOpenCurrentFloat<cr>", desc = "Open DevDocs for current extension" },
+      { "<leader>ha", "<cmd>DevdocsOpenFloat<cr>", desc = "Open DevDocs" },
+    },
+    event = "VeryLazy",
+    opts = {},
+  },
 }

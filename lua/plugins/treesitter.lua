@@ -23,4 +23,5 @@ return {
       "anuvyklack/pretty-fold.nvim",
     },
   },
+  "jonsmithers/vim-html-template-literals"
 }
