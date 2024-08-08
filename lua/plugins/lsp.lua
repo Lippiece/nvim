@@ -5,9 +5,8 @@ return {
     event = "BufReadPre",
     opts = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      local tinyca = require("tiny-code-action")
 
-      keys[#keys + 1] = { "<leader>ca	", tinyca.code_action }
+      keys[#keys + 1] = { "<leader>ca	", false }
 
       return {
         inlay_hints = {
