@@ -44,6 +44,7 @@ return {
   {
     "sontungexpt/better-diagnostic-virtual-text",
     "LspAttach",
+    lazy = false,
     config = function(_)
       require("better-diagnostic-virtual-text").setup({})
     end,
