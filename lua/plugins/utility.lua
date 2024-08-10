@@ -134,4 +134,12 @@ return {
       map("n", "<leader>ca", tinyca.code_action, { desc = "Tiny Code Action", noremap = true, silent = true })
     end,
   },
+  { -- Free inactive LSPs
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    opts = {
+      -- your options here
+    },
+  },
 }
