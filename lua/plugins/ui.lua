@@ -40,4 +40,10 @@ return {
       vim.cmd([[colorscheme flow]])
     end,
   },
+
+  {
+    "sontungexpt/better-diagnostic-virtual-text",
+    "LspAttach",
+    opts = {},
+  },
 }
