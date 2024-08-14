@@ -28,7 +28,7 @@ return {
         typescriptreact = { "biome", "eslint_d" },
         astro = { "prettierd", "prettier", "biome", "eslint_d", "stylelint" },
         vue = { "prettierd", "prettier", "biome", "eslint_d" },
-        css = { "prettierd", "prettier", "stylelint" },
+        css = { "prettierd", "prettier" },
         html = { "prettierd", "markuplint" },
         json = { "biome", "fixjson" },
         jsonc = { "biome" },
