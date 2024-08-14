@@ -32,7 +32,7 @@ return {
         html = { "prettierd", "markuplint" },
         json = { "biome", "fixjson" },
         jsonc = { "biome" },
-        nix = { "nixpkgs-fmt" },
+        nix = { "nixfmt" },
         lua = { "stylua" },
         python = { "isort", "black" },
         yaml = { "yamlfix" },
