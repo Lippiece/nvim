@@ -55,7 +55,7 @@ return {
         typescript = { "biomejs", "eslint_d" },
         typescriptreact = { "biomejs", "eslint_d" },
         javascriptreact = { "biomejs", "eslint_d" },
-        astro = { "biomejs", "eslint_d", "stylelint" },
+        astro = { "biomejs", "eslint_d" },
         vue = { "biomejs", "eslint_d" },
         css = { "stylelint" },
         html = { "markuplint" },
