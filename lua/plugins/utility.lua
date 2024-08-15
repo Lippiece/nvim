@@ -139,7 +139,8 @@ return {
     dependencies = "neovim/nvim-lspconfig",
     event = "VeryLazy",
     opts = {
-      -- your options here
+      notifications = true,
+      grace_period = 60 * 10,
     },
   },
 }
