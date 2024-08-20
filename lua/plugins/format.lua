@@ -4,7 +4,7 @@ return {
     -- optional = true,
     opts = {
       default_format_opts = {
-        timeout_ms = 20000,
+        timeout_ms = 4000,
         async = false, -- not recommended to change
         quiet = false, -- not recommended to change
         lsp_format = "fallback", -- not recommended to change
