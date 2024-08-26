@@ -4,20 +4,21 @@ return {
     -- optional = true,
     opts = {
       default_format_opts = {
-        timeout_ms = 4000,
+        timeout_ms = 3000,
         async = false, -- not recommended to change
         quiet = false, -- not recommended to change
-        lsp_format = "fallback", -- not recommended to change
+        lsp_format = "fallback",
         ignore_errors = true,
       },
       formatters = {
-        -- eslint = {
-        --   timeout_ms = 9999999,
-        --   command =  "eslint_d",
-        --   args = { "--no-ignore", "--fix", "$FILENAME" },
-        --   ignore_errors = true,
-        --   stdin = false,
-        --   stdout = false,
+        -- eslint_d = {
+        --   command = "eslint_d",
+        --   -- args = { "> /home/lippiece/asdasdasd" },
+        --   args = { "--stdin", "--fix-to-stdout", "<", "$FILENAME" },
+        --   -- args = { "--fix", "$FILENAME" },
+        --   -- ignore_errors = true,
+        --   -- stdin = true,
+        --   -- stdout = true,
         -- },
       },
       formatters_by_ft = {
