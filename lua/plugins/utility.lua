@@ -119,6 +119,7 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  -- Prettier code action
   {
     "rachartier/tiny-code-action.nvim",
     dependencies = {
@@ -127,14 +128,11 @@ return {
     },
     event = "LspAttach",
     config = function()
-      local tinyca = require("tiny-code-action")
-      local map = vim.keymap.set
-      tinyca.setup()
-
-      map("n", "<leader>ca", tinyca.code_action, { desc = "Tiny Code Action", noremap = true, silent = true })
+      require("tiny-code-action").setup()
     end,
   },
-  { -- Free inactive LSPs
+  -- Free inactive LSPs
+  {
     "zeioth/garbage-day.nvim",
     dependencies = "neovim/nvim-lspconfig",
     event = "VeryLazy",
