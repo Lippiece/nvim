@@ -38,6 +38,7 @@ return {
         python = { "isort", "black" },
         yaml = { "yamlfix" },
         fish = { "fish_indent" },
+        rust = { "rustfmt", lsp_format = "fallback" },
         injected = { options = { ignore_errors = true } },
       },
     },
