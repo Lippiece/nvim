@@ -79,6 +79,7 @@ vim.wo.linebreak = true
 -- vim.g.nocp = 1
 -- 	set nocp                    " 'compatible' is not set
 -- 	filetype plugin on          " plugins are enabled
+--
 -- :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;ABCDEFGHIJKLMNOPQRSTUVWXYZ
 -- langmap should be set in lua below:
 vim.o.langmap =
