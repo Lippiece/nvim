@@ -1,10 +1,10 @@
 return {
-  {
-    "dmmulroy/ts-error-translator.nvim",
-    opts = {
-      servers = { "volar", "vtsls" },
-    },
-  },
+  -- {
+  --   "dmmulroy/ts-error-translator.nvim",
+  --   opts = {
+  --     servers = { "volar", "vtsls" },
+  --   },
+  -- },
   -- {
   --   "neovim/nvim-lspconfig",
   --   opts = ,
