@@ -26,5 +26,10 @@ return {
         })
       end,
     },
+    strategies = { -- Change the adapters as required
+      chat = { adapter = "ollama" },
+      inline = { adapter = "ollama" },
+      agent = { adapter = "ollama" },
+    },
   },
 }
