@@ -10,10 +10,18 @@ return {
   config = true,
   opts = {
     adapters = {
-      openai = function()
-        return require("codecompanion.adapters").extend("openai", {
+      ollama = function()
+        return require("codecompanion.adapters").extend("ollama", {
           env = {
-            api_key = "cmd:op read op://personal/OpenAI/credential --no-newline",
+            url = "http://localhost:11434/",
+            api_key = "AAAAC3NzaC1lZDI1NTE5AAAAIAdpk+sZApBhaMEcgSNMdmLJUBH6ZcGOO/JB4D6pWT/A",
+          },
+          headers = {
+            ["Content-Type"] = "application/json",
+            ["Authorization"] = "Bearer ${api_key}",
+          },
+          parameters = {
+            sync = true,
           },
         })
       end,
