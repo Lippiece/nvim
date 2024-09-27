@@ -33,7 +33,7 @@ return {
         html = { "prettierd", "markuplint" },
         json = { "biome", "fixjson" },
         jsonc = { "biome" },
-        nix = { "nixfmt" },
+        nix = { "alejandra" },
         lua = { "stylua" },
         python = { "isort", "black" },
         yaml = { "yamlfix" },
