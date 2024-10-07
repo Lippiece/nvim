@@ -142,5 +142,5 @@ return {
     },
   },
   -- texinfo support
-  { "https://github.com/HiPhish/info.vim", event = "VeryLazy" },
+  { "https://github.com/HiPhish/info.vim", event = "LazyDone" },
 }
