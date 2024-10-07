@@ -141,4 +141,6 @@ return {
       grace_period = 60 * 10,
     },
   },
+  -- texinfo support
+  { "https://github.com/HiPhish/info.vim", event = "VeryLazy" },
 }
