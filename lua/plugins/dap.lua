@@ -35,7 +35,6 @@ return {
           program = "${file}",
           cwd = "${workspaceFolder}",
           runtimeExecutable = "tsx",
-          externalTerminal = true,
           breakOnErrorEntry = true,
         },
         {
@@ -45,16 +44,25 @@ return {
           program = "${file}",
           cwd = "${workspaceFolder}",
           runtimeExecutable = "node",
-          externalTerminal = true,
           breakOnErrorEntry = true,
         },
-        {
-          type = "pwa-node",
-          request = "attach",
-          name = "Attach",
-          processId = require("dap.utils").pick_process,
-          cwd = "${workspaceFolder}",
-        },
+        -- {
+        --   type = "pwa-node",
+        --   request = "launch",
+        --   name = "Launch file (Bun)",
+        --   program = "${file}",
+        --   cwd = "${workspaceFolder}",
+        --   runtimeExecutable = "bun",
+        --   runtimeArgs = { "run", "${file}" },
+        --   breakOnErrorEntry = true,
+        -- },
+        -- {
+        --   type = "pwa-node",
+        --   request = "attach",
+        --   name = "Attach",
+        --   processId = require("dap.utils").pick_process,
+        --   cwd = "${workspaceFolder}",
+        -- },
       }
     end
 
