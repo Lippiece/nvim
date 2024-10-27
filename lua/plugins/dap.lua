@@ -56,13 +56,13 @@ return {
         --   runtimeArgs = { "run", "${file}" },
         --   breakOnErrorEntry = true,
         -- },
-        -- {
-        --   type = "pwa-node",
-        --   request = "attach",
-        --   name = "Attach",
-        --   processId = require("dap.utils").pick_process,
-        --   cwd = "${workspaceFolder}",
-        -- },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "Attach",
+          processId = require("dap.utils").pick_process,
+          cwd = "${workspaceFolder}",
+        },
       }
     end
 
