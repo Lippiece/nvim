@@ -11,6 +11,16 @@ return {
         ignore_errors = true,
       },
       formatters = {
+        stylelint = {
+          meta = {
+            url = "https://github.com/stylelint/stylelint",
+            description = "A mighty CSS linter that helps you avoid errors and enforce conventions.",
+          },
+          command = "stylelint",
+          args = { "$FILENAME", "--fix" },
+          exit_codes = { 0, 2 }, -- code 2 is given when trying file includees some non-autofixable errors
+          stdin = false,
+        },
         -- eslint_d = {
         --   command = "eslint_d",
         --   -- args = { "> /home/lippiece/asdasdasd" },
