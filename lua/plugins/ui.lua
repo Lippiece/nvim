@@ -34,16 +34,18 @@ return {
   --   end,
   -- },
   {
-    "kepano/flexoki-neovim",
+    "vigoux/oak",
     lazy = false,
     config = function()
-      vim.cmd([[colorscheme flexoki-dark]])
+      vim.cmd([[colorscheme oak]])
     end,
   },
   {
-    "rktjmp/lush.nvim",
-    -- if you wish to use your own colorscheme:
-    { dir = "/home/lippiece/.config/nvim/lua/lush_themes/lush.lua", lazy = false },
+    "Matsuuu/pinkmare",
+    lazy = false,
+    -- config = function()
+    --   vim.cmd([[colorscheme oak]])
+    -- end,
   },
   {
     "folke/noice.nvim",
