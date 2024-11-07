@@ -36,16 +36,10 @@ return {
   {
     "vigoux/oak",
     lazy = false,
-    config = function()
-      vim.cmd([[colorscheme oak]])
-    end,
   },
   {
-    "Matsuuu/pinkmare",
+    "navarasu/onedark.nvim",
     lazy = false,
-    -- config = function()
-    --   vim.cmd([[colorscheme oak]])
-    -- end,
   },
   {
     "folke/noice.nvim",
