@@ -41,9 +41,9 @@ return {
     end,
   },
   {
-    lazy = false,
     "rktjmp/lush.nvim",
     -- if you wish to use your own colorscheme:
+    { dir = "/home/lippiece/.config/nvim/lua/plugins/lush.lua", lazy = true },
   },
   {
     "folke/noice.nvim",
