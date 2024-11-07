@@ -1,4 +1,5 @@
 return {
+  -- @type LazyVimConfig
   {
     "nvim-lualine/lualine.nvim",
     optional = true,
@@ -34,7 +35,7 @@ return {
   --   end,
   -- },
   {
-    "vigoux/oak",
+    "olimorris/onedarkpro.nvim",
     lazy = false,
   },
   {

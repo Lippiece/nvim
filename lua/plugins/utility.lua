@@ -143,4 +143,6 @@ return {
   },
   -- texinfo support
   { "https://github.com/HiPhish/info.vim", event = "BufEnter" },
+  -- neovim in browser
+  { "glacambre/firenvim", build = ":call firenvim#install(0)" },
 }
