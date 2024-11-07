@@ -13,7 +13,7 @@
   "conform.nvim": { "branch": "master", "commit": "d28ccf945374edd9f1c34a82f6c22261dbd8ab98" },
   "dressing.nvim": { "branch": "master", "commit": "6ef1ca479d37d4ff66f13eed44d08912caff483a" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
-  "flow.nvim": { "branch": "main", "commit": "441dbcdcdffd1acd1597ef079cb3b2cd1b856337" },
+  "flexoki": { "branch": "main", "commit": "55448141a6650e913b1870a85d58caeeb68791ac" },
   "friendly-snippets": { "branch": "main", "commit": "de8fce94985873666bd9712ea3e49ee17aadb1ed" },
   "garbage-day.nvim": { "branch": "main", "commit": "750ef08ae6031ee3683014c5349144340c08ead6" },
   "git-conflict.nvim": { "branch": "main", "commit": "ed1ca6dfd60bf609714f791cfa63aee33aef64ed" },

@@ -22,14 +22,22 @@ return {
       sources = { "filesystem", "document_symbols" },
     },
   },
+  -- Colorscheme
+  -- {
+  --   "0xstepit/flow.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     require("flow").setup({})
+  --     vim.cmd([[colorscheme flow]])
+  --   end,
+  -- },
   {
-    "0xstepit/flow.nvim",
+    "kepano/flexoki",
     lazy = false,
-    priority = 1000,
-    opts = {},
     config = function()
-      require("flow").setup({})
-      vim.cmd([[colorscheme flow]])
+      vim.cmd([[colorscheme flexoki]])
     end,
   },
   {
