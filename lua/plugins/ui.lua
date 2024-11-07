@@ -34,10 +34,10 @@ return {
   --   end,
   -- },
   {
-    "kepano/flexoki",
+    "kepano/flexoki-neovim",
     lazy = false,
     config = function()
-      vim.cmd([[colorscheme flexoki]])
+      vim.cmd([[colorscheme flexoki-dark]])
     end,
   },
   {
