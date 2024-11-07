@@ -41,6 +41,10 @@ return {
     end,
   },
   {
+    "rktjmp/lush.nvim",
+    -- if you wish to use your own colorscheme:
+  },
+  {
     "folke/noice.nvim",
     opts = {
       routes = {
