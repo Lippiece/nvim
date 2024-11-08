@@ -38,10 +38,10 @@ return {
     "olimorris/onedarkpro.nvim",
     lazy = false,
   },
-  {
-    "navarasu/onedark.nvim",
-    lazy = false,
-  },
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   lazy = false,
+  -- },
   {
     "folke/noice.nvim",
     opts = {
