@@ -35,7 +35,7 @@ return {
         typescript = { "biome-check", "eslint_d" },
         javascriptreact = { "biome-check", "eslint_d" },
         typescriptreact = { "biome-check", "eslint_d" },
-        astro = { "prettierd", "biome-check", "eslint_d", "stylelint" },
+        astro = { "prettier", "biome-check", "eslint_d", "stylelint" },
         vue = { "prettierd", "biome-check", "eslint_d", "stylelint" },
         css = { "prettierd", "stylelint" },
         html = { "prettierd", "markuplint" },
