@@ -1,4 +1,4 @@
-return false and {}
+return {}
   or {
     -- {
     --   "dmmulroy/ts-error-translator.nvim",
