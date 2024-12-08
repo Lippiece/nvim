@@ -11,6 +11,12 @@ return {
         ignore_errors = true,
       },
       formatters = {
+        oxlint = {
+          command = "oxlint",
+          args = { "--import-plugin", "--fix", "--fix-suggestions", "--fix-dangerously", "$FILENAME" },
+          exit_codes = { 0, 2 }, -- code 2 is given when the file includes some non-autofixable errors
+          stdin = false,
+        },
         stylelint = {
           meta = {
             url = "https://github.com/stylelint/stylelint",
@@ -31,12 +37,12 @@ return {
       },
       formatters_by_ft = {
         -- ["*"] = { "injected" },
-        javascript = { "biome-check", "eslint_d" },
-        typescript = { "biome-check", "eslint_d" },
-        javascriptreact = { "biome-check", "eslint_d" },
-        typescriptreact = { "biome-check", "eslint_d" },
-        astro = { "prettier", "biome-check", "eslint_d", "stylelint" },
-        vue = { "prettierd", "biome-check", "eslint_d", "stylelint" },
+        javascript = { "biome-check", "oxlint", "eslint_d" },
+        typescript = { "biome-check", "oxlint", "eslint_d" },
+        javascriptreact = { "biome-check", "oxlint", "eslint_d" },
+        typescriptreact = { "biome-check", "oxlint", "eslint_d" },
+        astro = { "prettier", "biome-check", "oxlint", "eslint_d", "stylelint" },
+        vue = { "prettierd", "biome-check", "oxlint", "eslint_d", "stylelint" },
         css = { "prettierd", "stylelint" },
         html = { "prettierd", "markuplint" },
         json = { "biome-check", "fixjson" },
@@ -78,15 +84,19 @@ return {
       -- LazyVim extension to easily override linter options
       -- or add custom linters.
       ---@type table<string,table>
-      -- linters = {
-      -- -- Example of using selene only when a selene.toml file is present
-      -- selene = {
-      --   -- `condition` is another LazyVim extension that allows you to
-      --   -- dynamically enable/disable linters based on the context.
-      --   condition = function(ctx)
-      --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
-      --   end,
-      -- } },
+      linters = {
+        oxlint = {
+          cmd = "oxlint",
+          stdin = false,
+          args = { "--import-plugin", "--format", "unix" },
+          stream = "stdout",
+          ignore_exitcode = true,
+          parser = require("lint.parser").from_errorformat("%f:%l:%c: %m", {
+            source = "oxlint",
+            severity = vim.diagnostic.severity.WARN,
+          }),
+        },
+      },
     },
   },
 }
