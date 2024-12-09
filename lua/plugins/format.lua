@@ -28,8 +28,9 @@ return {
           stdin = false,
         },
         biome_check = {
+          command = "biome",
           -- prepend_args = { "--unsafe" },
-          append_args = { "--fix", "--unsafe", "--stdin-file-path", "$FILENAME" },
+          append_args = { "check", "--fix", "--unsafe", "--stdin-file-path", "$FILENAME" },
           -- ignore_errors = true,
           -- stdin = true,
           -- stdout = true,
