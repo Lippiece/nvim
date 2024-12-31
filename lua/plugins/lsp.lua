@@ -1,12 +1,13 @@
-return {
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        nil_ls = {
-          autostart = true,
+return {}
+  or {
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        servers = {
+          nil_ls = {
+            autostart = true,
+          },
         },
       },
     },
-  },
-}
+  }
