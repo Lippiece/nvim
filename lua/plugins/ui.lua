@@ -121,4 +121,5 @@ return {
       })
     end,
   },
+  "benfowler/telescope-luasnip.nvim",
 }
