@@ -121,5 +121,21 @@ return {
       })
     end,
   },
-  "benfowler/telescope-luasnip.nvim",
+  {
+    "benfowler/telescope-luasnip.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope.nvim",
+        opts = {
+          setup = {
+            extensions = {
+              luasnip = function()
+                require("telescope").load_extension("luasnip")
+              end,
+            },
+          },
+        },
+      },
+    },
+  },
 }
