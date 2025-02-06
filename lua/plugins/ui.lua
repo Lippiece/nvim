@@ -123,9 +123,18 @@ return {
   },
   {
     "benfowler/telescope-luasnip.nvim",
-    opts = function()
-      require("telescope").load_extension("luasnip")
-    end,
+    keys = {
+      {
+        "<leader>fs",
+        function()
+          require("telescope").load_extension("luasnip")
+
+          vim.cmd("Telescope luasnip")
+        end,
+        mode = "n",
+        desc = "Search snippets",
+      },
+    },
     dependencies = {
       "nvim-telescope/telescope.nvim",
     },
