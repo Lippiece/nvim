@@ -145,4 +145,11 @@ return {
   { "https://github.com/HiPhish/info.vim", event = "BufEnter" },
   -- neovim in browser
   { "glacambre/firenvim", build = ":call firenvim#install(0)" },
+  {
+    "danymat/neogen",
+    config = true,
+    keys = {
+      { "gca", ":lua require('neogen').generate()<CR>", desc = "Create comment annotation" },
+    },
+  },
 }
