@@ -1,3 +1,3 @@
 return {
-  -- { "nvim-treesitter/nvim-treesitter", enabled = false },
+  { "folke/flash.nvim", enabled = false },
 }
