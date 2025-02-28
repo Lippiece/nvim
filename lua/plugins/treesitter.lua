@@ -20,8 +20,9 @@ return {
         opts = {},
       },
       "AckslD/nvim-trevJ.lua",
-      { "anuvyklack/pretty-fold.nvim", dependencies = { "anuvyklack/fold-preview.nvim" } },
+      "anuvyklack/pretty-fold.nvim",
     },
   },
+
   "jonsmithers/vim-html-template-literals",
 }
