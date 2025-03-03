@@ -74,6 +74,7 @@
   "refactoring.nvim": { "branch": "master", "commit": "cd770c7e05bcc0a7e180063cde39e973b3be04ee" },
   "render-markdown.nvim": { "branch": "main", "commit": "4d754be0734aefa0df4aa016d3c6993cf6d40311" },
   "snacks.nvim": { "branch": "main", "commit": "4ce197bff9cb9b78a0bdcebb6f7ebbf22cd48c6a" },
+  "tailwind-tools": { "branch": "master", "commit": "abe7368392345c53174979c2cf033e832de80ef8" },
   "telescope-luasnip.nvim": { "branch": "master", "commit": "07a2a2936a7557404c782dba021ac0a03165b343" },
   "telescope.nvim": { "branch": "master", "commit": "814f102cd1da3dc78c7d2f20f2ef3ed3cdf0e6e4" },
   "tiny-code-action.nvim": { "branch": "main", "commit": "cc2f6045e67e01355c49fea10568baba856e844a" },
