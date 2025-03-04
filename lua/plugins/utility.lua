@@ -74,7 +74,7 @@ return {
     cmd = {
       "MasonUpdateAll",
     },
-    dependencies = { "Zeioth/mason-extra-cmds" },
+    dependencies = { "Zeioth/mason-extra-cmds", opts = {} },
   },
   {
     "kawre/leetcode.nvim",
