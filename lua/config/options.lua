@@ -13,22 +13,19 @@ vim.o.smartcase = true
 vim.o.signcolumn = "yes"
 vim.o.updatetime = 250
 vim.o.guifont = "0xProto Nerd Font Mono:h10"
-vim.o.clipboard = "unnamedplus"
 vim.cmd([[set viminfo='10,\"100,:20,%,n~/.viminfo]])
 
 -- Scroll offsets
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
+vim.o.scrolloff = 8
+vim.o.sidescrolloff = 8
 
 if vim.g.neovide then
-  vim.opt.scrolloff = 15
-  vim.opt.sidescrolloff = 15
+  vim.o.scrolloff = 15
   vim.g.neovide_transparency = 0.9
 
-  vim.g.neovide_font_hinting = "none"
-  vim.g.neovide_font_edging = "subpixelantialias"
+  -- vim.g.neovide_font_hinting = "none"
+  -- vim.g.neovide_font_edging = "subpixelantialias"
 
-  -- Replace with ctrl+v etc
   vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
   vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
   vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
@@ -39,14 +36,8 @@ if vim.g.neovide then
   vim.api.nvim_set_keymap("v", "<C-v>", "<C-R>+", { noremap = true, silent = true })
 end
 
--- Autocomplete
-function _G.check_back_space()
-  local col = vim.fn.col(".") - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
-end
-
-vim.opt.wildmenu = true
-vim.opt.wildmode = "longest:full,full"
+vim.o.wildmenu = true
+vim.o.wildmode = "longest:full,full"
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
@@ -63,17 +54,12 @@ vim.g.lazyredraw = true
 vim.o.number = true
 vim.o.relativenumber = true
 
--- indenting with spaces
--- vim.o.expandtab = true
--- vim.o.tabstop = 2
--- vim.o.shiftwidth = 2
-
 -- syntax highlighting
 vim.cmd("filetype plugin on")
 vim.cmd("syntax on")
 
-vim.wo.wrap = true
-vim.wo.linebreak = true
+vim.o.wrap = true
+vim.o.linebreak = true
 
 -- netrw
 -- vim.g.nocp = 1
@@ -85,6 +71,6 @@ vim.o.langmap =
   "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
 -- fold
-vim.g.foldnestmax = 8
-vim.g.foldlevel = 1
-vim.g.foldlevelstart = 1
+vim.o.foldnestmax = 8
+vim.o.foldlevel = 1
+vim.o.foldlevelstart = 1

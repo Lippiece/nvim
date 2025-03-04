@@ -20,7 +20,7 @@ return {
         opts = {},
       },
       "AckslD/nvim-trevJ.lua",
-      "anuvyklack/pretty-fold.nvim",
+      -- "anuvyklack/pretty-fold.nvim",
     },
   },
 
