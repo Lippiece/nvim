@@ -69,7 +69,13 @@ return {
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
   },
-  { "Zeioth/mason-extra-cmds", config = true },
+  {
+    "williamboman/mason.nvim",
+    cmd = {
+      "MasonUpdateAll",
+    },
+    dependencies = { "Zeioth/mason-extra-cmds" },
+  },
   {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html",
