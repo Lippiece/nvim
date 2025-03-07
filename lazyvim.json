@@ -3,7 +3,6 @@
     "version": "*"
   },
   "extras": [
-    "lazyvim.plugins.extras.ai.codeium",
     "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.coding.mini-comment",
     "lazyvim.plugins.extras.coding.mini-surround",
@@ -15,6 +14,7 @@
     "lazyvim.plugins.extras.lang.docker",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
+    "lazyvim.plugins.extras.lang.nushell",
     "lazyvim.plugins.extras.lang.svelte",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.vue",
