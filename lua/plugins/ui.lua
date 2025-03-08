@@ -123,7 +123,6 @@ return {
   -- },
   {
     "L3MON4D3/LuaSnip",
-    -- install jsregexp (optional!).
     build = "make install_jsregexp",
   },
   {
@@ -148,5 +147,59 @@ return {
     "chrisgrieser/nvim-origami",
     event = "VeryLazy",
     opts = {}, -- needed even when using default config
+  },
+  {
+    "Saghen/blink.cmp",
+
+    opts = {
+      completion = {
+        menu = {
+          draw = {
+            components = {
+              kind_icon = {
+                ellipsis = false,
+
+                text = function(ctx)
+                  local lspkind = require("lspkind")
+                  local icon = ctx.kind_icon
+                  if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                    local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                    if dev_icon then
+                      icon = dev_icon
+                    end
+                  else
+                    icon = require("lspkind").symbolic(ctx.kind, {
+                      mode = "symbol",
+                    })
+                  end
+
+                  return icon .. ctx.icon_gap
+                end,
+
+                highlight = function(ctx)
+                  local hl = ctx.kind_hl
+                  if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                    local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                    if dev_icon then
+                      hl = dev_hl
+                    end
+                  end
+                  return hl
+                end,
+              },
+            },
+          },
+        },
+
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+        },
+      },
+    },
+
+    dependencies = { "onsails/lspkind.nvim" },
+
+    sources = { default = { "lazydev", "lsp", "snippets", "path" } },
   },
 }

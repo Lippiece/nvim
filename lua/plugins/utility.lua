@@ -64,8 +64,10 @@ return {
       },
     },
   },
+  -- Nagging about how to use nvim
   {
     "m4xshen/hardtime.nvim",
+    event = "VimEnter",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
   },
@@ -98,7 +100,9 @@ return {
   {
     "chrisgrieser/nvim-various-textobjs",
     lazy = false,
-    opts = { useDefaultKeymaps = true },
+    opts = {
+      useDefaultKeymaps = true,
+    },
   },
   { -- Provides an explanation for regular expressions.
     "tomiis4/Hypersonic.nvim",
@@ -111,20 +115,6 @@ return {
     opts = {},
   },
   "akinsho/git-conflict.nvim",
-  {
-    "luckasRanarison/nvim-devdocs",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    keys = {
-      { "<leader>hc", "<cmd>DevdocsOpenCurrentFloat<cr>", desc = "Open DevDocs for current extension" },
-      { "<leader>ha", "<cmd>DevdocsOpenFloat<cr>", desc = "Open DevDocs" },
-    },
-    event = "VeryLazy",
-    opts = {},
-  },
   -- Prettier code action
   {
     "rachartier/tiny-code-action.nvim",
