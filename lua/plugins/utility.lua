@@ -154,7 +154,7 @@ return {
   -- Convert JSON to typescript
   {
     "Redoxahmii/json-to-types.nvim",
-    build = "sh install.sh npm", -- Replace `npm` with your preferred package manager (e.g., yarn, pnpm).
+    build = "sh install.sh bun", -- Replace `npm` with your preferred package manager (e.g., yarn, pnpm).
     ft = "json",
     keys = {
       {
