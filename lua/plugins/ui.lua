@@ -202,17 +202,17 @@ return {
 
     sources = {
       default = { "lazydev", "lsp", "snippets", "path" },
-
-      transform_items = function(_, items)
-        -- Remove the "Text" source from lsp autocomplete
-        return vim.tbl_filter(function(item)
-          return item.kind ~= vim.lsp.protocol.CompletionItemKind.Text
-        end, items)
-      end,
-
       providers = {
         buffer = {
           enable = false,
+        },
+        lsp = {
+          transform_items = function(ctx, items)
+            -- Remove the "Text" source from lsp autocomplete
+            return vim.tbl_filter(function(item)
+              return item.kind ~= vim.lsp.protocol.CompletionItemKind.Text
+            end, items)
+          end,
         },
       },
     },

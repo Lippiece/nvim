@@ -20,6 +20,7 @@
   "hardtime.nvim": { "branch": "main", "commit": "f87c86d1aa1e05dcf3c6ecd97fbfd237e2de0bf5" },
   "hlargs.nvim": { "branch": "main", "commit": "a5a7fdacc0ac2f7ca9d241e0e059cb85f0e733bc" },
   "info.vim": { "branch": "master", "commit": "b1acda75344f36b91d9c51a33201eada38cf33e9" },
+  "json-to-types.nvim": { "branch": "main", "commit": "e8dcc6ac710c59fcac354255a835f72916171ba8" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazydev.nvim": { "branch": "main", "commit": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c" },
   "leetcode.nvim": { "branch": "master", "commit": "db7e1cd6b9191b34b4c1f2f96e4e3949cde9f951" },

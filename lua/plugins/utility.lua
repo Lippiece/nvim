@@ -96,6 +96,7 @@ return {
     },
     cmd = "Leet",
   },
+  -- Creates directories if they don't exist on `nvim <path>`
   "mateuszwieloch/automkdir.nvim",
   {
     "chrisgrieser/nvim-various-textobjs",
@@ -104,7 +105,8 @@ return {
       useDefaultKeymaps = true,
     },
   },
-  { -- Provides an explanation for regular expressions.
+  -- Provides an explanation for regular expressions.
+  {
     "tomiis4/Hypersonic.nvim",
 
     event = "CmdlineEnter",
@@ -141,11 +143,30 @@ return {
   { "https://github.com/HiPhish/info.vim", event = "BufEnter" },
   -- neovim in browser
   { "glacambre/firenvim", build = ":call firenvim#install(0)" },
+  -- JSDoc comments
   {
     "danymat/neogen",
     config = true,
     keys = {
       { "gca", ":lua require('neogen').generate()<CR>", desc = "Create comment annotation" },
+    },
+  },
+  -- Convert JSON to typescript
+  {
+    "Redoxahmii/json-to-types.nvim",
+    build = "sh install.sh npm", -- Replace `npm` with your preferred package manager (e.g., yarn, pnpm).
+    ft = "json",
+    keys = {
+      {
+        "<leader>cU",
+        "<CMD>ConvertJSONtoLang typescript<CR>",
+        desc = "Convert JSON to TS",
+      },
+      {
+        "<leader>ct",
+        "<CMD>ConvertJSONtoLangBuffer typescript<CR>",
+        desc = "Convert JSON to TS Buffer",
+      },
     },
   },
 }
