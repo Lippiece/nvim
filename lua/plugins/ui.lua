@@ -200,6 +200,13 @@ return {
 
     dependencies = { "onsails/lspkind.nvim" },
 
-    sources = { default = { "lazydev", "lsp", "snippets", "path" } },
+    sources = {
+      default = { "lazydev", "lsp", "snippets", "path" },
+      providers = {
+        buffer = {
+          enable = false,
+        },
+      },
+    },
   },
 }
