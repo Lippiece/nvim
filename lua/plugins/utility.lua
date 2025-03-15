@@ -67,7 +67,7 @@ return {
   -- Nagging about how to use nvim
   {
     "m4xshen/hardtime.nvim",
-    event = "VimEnter",
+    enabled = false,
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
   },
