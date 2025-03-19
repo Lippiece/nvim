@@ -74,3 +74,6 @@ vim.o.langmap =
 vim.o.foldnestmax = 8
 vim.o.foldlevel = 1
 vim.o.foldlevelstart = 1
+
+-- Don't break cli programs' watch mode
+vim.o.backupcopy = "yes"
