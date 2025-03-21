@@ -100,10 +100,6 @@ return {
   "mateuszwieloch/automkdir.nvim",
   {
     "chrisgrieser/nvim-various-textobjs",
-    lazy = false,
-    opts = {
-      useDefaultKeymaps = true,
-    },
   },
   -- Provides an explanation for regular expressions.
   {
