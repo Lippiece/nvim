@@ -13,7 +13,6 @@ vim.o.smartcase = true
 vim.o.signcolumn = "yes"
 vim.o.updatetime = 250
 vim.o.guifont = "0xProto Nerd Font Mono:h10"
-vim.cmd([[set viminfo='10,\"100,:20,%,n~/.viminfo]])
 
 -- Scroll offsets
 vim.o.scrolloff = 8
