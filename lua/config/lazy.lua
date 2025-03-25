@@ -46,6 +46,10 @@ require("lazy").setup({
       -- in ms
       duration = 5 * 1000,
     },
+    -- Time in seconds to wait before running fetch again for a plugin.
+    -- Repeated update/check operations will not run again until this
+    -- cooldown period has passed.
+    cooldown = 3600, -- 1 hour
   },
   install = {},
   checker = {
