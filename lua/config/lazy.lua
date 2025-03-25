@@ -31,18 +31,20 @@ require("lazy").setup({
     lazy = true,
     -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
     -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
+    -- always use the latest git commit
+    version = false,
     -- version = "*", -- try installing the latest stable version for plugins that support semver
+
     ---limit the maximum amount of concurrent tasks
-    -- concurrency = 8,
+    concurrency = 8,
     -- rate of network related git operations (clone, fetch, checkout)
     throttle = {
       -- not enabled by default
-      enabled = true,
+      enabled = false,
       -- max 2 ops every 5 seconds
       rate = 2,
       -- in ms
-      duration = 1 * 1000,
+      duration = 5 * 1000,
     },
   },
   install = {},
