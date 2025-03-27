@@ -76,3 +76,5 @@ vim.o.foldlevelstart = 1
 
 -- Don't break cli programs' watch mode
 vim.o.backupcopy = "yes"
+
+vim.o.mouse = ""
