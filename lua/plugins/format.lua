@@ -16,6 +16,7 @@ return {
           args = { "--import-plugin", "--fix", "--fix-suggestions", "--fix-dangerously", "$FILENAME" },
           exit_codes = { 0, 2 }, -- code 2 is given when the file includes some non-autofixable errors
           stdin = false,
+          tmpfile_format = "ConformOxlint$FILENAME",
         },
         stylelint = {
           meta = {
@@ -26,6 +27,7 @@ return {
           args = { "$FILENAME", "--fix" },
           exit_codes = { 0, 2 }, -- code 2 is given when the file includes some non-autofixable errors
           stdin = false,
+          tmpfile_format = "ConformStylelint$FILENAME",
         },
         biome_check = {
           command = "biome",
