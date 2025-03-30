@@ -1,14 +1,12 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- optional = true,
+    ---@type conform.setupOpts
     opts = {
-      default_format_opts = {
-        timeout_ms = 20000,
-        async = false, -- not recommended to change
-        quiet = false, -- not recommended to change
-        lsp_format = "fallback",
+      format_on_save = {
+        async = true,
         ignore_errors = true,
+        lsp_format = "first",
       },
       formatters = {
         oxlint = {
@@ -44,10 +42,10 @@ return {
         typescript = { "biome-check", "oxlint", "eslint_d" },
         javascriptreact = { "biome-check", "oxlint", "eslint_d" },
         typescriptreact = { "biome-check", "oxlint", "eslint_d" },
-        astro = { "prettierd", "biome-check", "oxlint", "eslint_d", "stylelint" },
-        vue = { "prettierd", "biome-check", "oxlint", "eslint_d", "stylelint" },
-        svelte = { "prettierd", "biome-check", "oxlint", "eslint_d", "stylelint" },
-        css = { "prettierd", "stylelint" },
+        astro = { "prettierd", "biome-check", "oxlint", "eslint_d" },
+        vue = { "prettierd", "biome-check", "oxlint", "eslint_d" },
+        svelte = { "prettierd", "biome-check", "oxlint", "eslint_d" },
+        css = { "prettierd" },
         html = { "prettierd", "markuplint" },
         json = { "biome-check", "fixjson" },
         jsonc = { "biome-check" },
@@ -75,8 +73,8 @@ return {
         typescript = { "biomejs", "eslint_d", "oxlint" },
         typescriptreact = { "biomejs", "eslint_d", "oxlint" },
         javascriptreact = { "biomejs", "eslint_d", "oxlint" },
-        astro = { "biomejs", "eslint_d", "stylelint", "oxlint" },
-        svelte = { "biomejs", "eslint_d", "stylelint", "oxlint" },
+        astro = { "biomejs", "eslint_d", "oxlint" },
+        svelte = { "biomejs", "eslint_d", "oxlint" },
         vue = { "biomejs", "eslint_d", "oxlint" },
         css = { "stylelint" },
         html = { "markuplint" },
