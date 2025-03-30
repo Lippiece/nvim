@@ -78,3 +78,8 @@ vim.o.foldlevelstart = 1
 vim.o.backupcopy = "yes"
 
 vim.o.mouse = ""
+
+vim.diagnostic.config({
+  virtual_lines = true,
+  virtual_text = false,
+})
