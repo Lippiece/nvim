@@ -3,16 +3,16 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
-      -- format_on_save = {
-      --   async = true,
-      --   ignore_errors = true,
-      --   lsp_format = "first",
-      --   undojoin = true,
-      -- },
+      default_format_opts = {
+        async = true,
+        ignore_errors = true,
+        lsp_format = "fallback",
+        undojoin = true,
+      },
       format_after_save = {
         ignore_errors = true,
+        lsp_format = "fallback",
         undojoin = true,
-        lsp_format = "first",
       },
       formatters = {
         oxlint = {
