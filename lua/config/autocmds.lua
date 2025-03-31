@@ -16,5 +16,9 @@
 -- })
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  command = ":lua require('conform').format({async = true, lsp_format = 'first'})",
+  callback = function()
+    require("conform").format({ async = true, lsp_format = "first" })
+    -- then save
+    vim.cmd("silent! w")
+  end,
 })

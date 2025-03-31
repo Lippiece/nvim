@@ -4,9 +4,15 @@ return {
     "stevearc/conform.nvim",
     ---@type conform.setupOpts
     opts = {
-      format_on_save = {
-        async = true,
+      -- format_on_save = {
+      --   async = true,
+      --   ignore_errors = true,
+      --   lsp_format = "first",
+      --   undojoin = true,
+      -- },
+      format_after_save = {
         ignore_errors = true,
+        undojoin = true,
         lsp_format = "first",
       },
       formatters = {
