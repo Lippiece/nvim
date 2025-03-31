@@ -18,5 +18,7 @@ return {
   { import = "astrocommunity.pack.svelte" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.yaml" },
+
+  { import = "astrocommunity.colorscheme.tokyonight" },
   -- import/override with your plugins folder
 }
