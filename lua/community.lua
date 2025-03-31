@@ -36,11 +36,11 @@ return {
   { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   -- textDocument/documentLink support
   { import = "astrocommunity.lsp.nvim-lsp-endhints" },
-  { import = "astrocommunity.lsp.lsplinks.nvim" },
+  { import = "astrocommunity.lsp.lsplinks-nvim" },
   -- Kill lsp servers and restore them automatically
   { import = "astrocommunity.lsp.garbage-day-nvim" },
   -- Highlight diagnostic scope
-  { import = "astrocommunity.lsp.delimited.nvim" },
+  { import = "astrocommunity.lsp.delimited-nvim" },
   { import = "astrocommunity.lsp.actions-preview-nvim" },
 
   { import = "astrocommunity.recipes.auto-session-restore" },
