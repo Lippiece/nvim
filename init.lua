@@ -17,3 +17,8 @@ end
 
 require "lazy_setup"
 require "polish"
+
+vim.diagnostic.config {
+  severity_sort = true,
+  virtual_lines = true,
+}

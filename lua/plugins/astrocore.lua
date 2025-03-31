@@ -48,11 +48,11 @@ return {
         foldnestmax = 8,
         foldlevel = 1,
         foldlevelstart = 1,
+        mouse = "",
+        backupcopy = "yes",
+        scrolloff = 8,
       },
       g = { -- vim.g.<key>
-        -- configure global vim variables (vim.g)
-        -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
-        -- This can be found in the `lua/lazy_setup.lua` file
         colorcolumn = "80",
       },
     },
@@ -63,14 +63,14 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs, shit+h, shift+l
+        -- navigate buffer tabs
         ["<S-h>"] = {
-          function() require("astrocore.buffer").nav(vim.v.count1) end,
-          desc = "Next buffer",
-        },
-        ["<S-l>"] = {
           function() require("astrocore.buffer").nav(-vim.v.count1) end,
           desc = "Previous buffer",
+        },
+        ["<S-l>"] = {
+          function() require("astrocore.buffer").nav(vim.v.count1) end,
+          desc = "Next buffer",
         },
 
         -- mappings seen under group name "Buffer"

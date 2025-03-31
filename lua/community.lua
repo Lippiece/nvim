@@ -20,5 +20,11 @@ return {
   { import = "astrocommunity.pack.yaml" },
 
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+
+  -- Highlight colors like rgb(12,123,12), #a55, etc
+  { import = "astrocommunity.colors.ccc" },
+
+  { import = "astrocommunity.ts-comments.nvim" },
+
   -- import/override with your plugins folder
 }
