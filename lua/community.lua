@@ -26,5 +26,7 @@ return {
 
   { import = "astrocommunity.comment.ts-comments-nvim" },
 
+  { import = "astrocommunity.editing-support.conform-nvim" },
+  { import = "astrocommunity.editing-support.nvim-context-vt" },
   -- import/override with your plugins folder
 }
