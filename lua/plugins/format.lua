@@ -1,3 +1,4 @@
+local conform = require("conform")
 return {
   {
     "stevearc/conform.nvim",

@@ -8,7 +8,7 @@ return {
       table.insert(opts.sections.lualine_x, 2, LazyVim.lualine.cmp_source("codeium"))
     end,
   },
-  "mong8se/actually.nvim",
+  { "mong8se/actually.nvim", opts = {} },
   {
     "samjwill/nvim-unception",
     init = function()
@@ -92,10 +92,6 @@ return {
       vim.cmd([[colorscheme onedark]])
     end,
   },
-  -- {
-  --   "navarasu/onedark.nvim",
-  --   lazy = false,
-  -- },
   {
     "folke/noice.nvim",
     opts = {
@@ -112,15 +108,6 @@ return {
       },
     },
   },
-  -- {
-  --   "zaldih/themery.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require("themery").setup({
-  --       livePreview = true, -- Apply theme while picking. Default to true.
-  --     })
-  --   end,
-  -- },
   {
     "L3MON4D3/LuaSnip",
     build = "make install_jsregexp",
@@ -150,9 +137,58 @@ return {
   },
   {
     "Saghen/blink.cmp",
-
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
+      snippets = { preset = "luasnip" },
+      signature = { enabled = true, trigger = { show_on_insert = true } },
       completion = {
+        list = {
+          max_items = 200,
+
+          selection = {
+            -- When `true`, will automatically select the first item in the completion list
+            preselect = true,
+            -- preselect = function(ctx) return vim.bo.filetype ~= 'markdown' end,
+
+            -- When `true`, inserts the completion item automatically when selecting it
+            -- You may want to bind a key to the `cancel` command (default <C-e>) when using this option,
+            -- which will both undo the selection and hide the completion menu
+            auto_insert = false,
+            -- auto_insert = function(ctx) return vim.bo.filetype ~= 'markdown' end
+          },
+
+          cycle = {
+            -- When `true`, calling `select_next` at the _bottom_ of the completion list
+            -- will select the _first_ completion item.
+            from_bottom = true,
+            -- When `true`, calling `select_prev` at the _top_ of the completion list
+            -- will select the _last_ completion item.
+            from_top = true,
+          },
+        },
+        trigger = {
+          -- When true, will prefetch the completion items when entering insert mode
+          prefetch_on_insert = false,
+
+          -- When false, will not show the completion window automatically when in a snippet
+          show_in_snippet = false,
+
+          -- When true, will show the completion window after typing any of alphanumerics, `-` or `_`
+          show_on_keyword = false,
+
+          -- When true, will show the completion window after typing a trigger character
+          show_on_trigger_character = false,
+
+          -- When both this and show_on_trigger_character are true, will show the completion window
+          -- when the cursor comes after a trigger character after accepting an item
+          show_on_accept_on_trigger_character = false,
+
+          -- When both this and show_on_trigger_character are true, will show the completion window
+          -- when the cursor comes after a trigger character when entering insert mode
+          show_on_insert_on_trigger_character = false,
+        },
+        accept = { auto_brackets = { enabled = true } },
         menu = {
           draw = {
             components = {
