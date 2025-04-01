@@ -19,40 +19,48 @@ return {
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.yaml" },
 
+  -- NOTE: colorscheme
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
 
+  -- NOTE: color
   -- Highlight colors like rgb(12,123,12), #a55, etc
   { import = "astrocommunity.color.ccc-nvim" },
 
+  -- NOTE: comment
   { import = "astrocommunity.comment.ts-comments-nvim" },
 
+  -- NOTE: editing-support
   { import = "astrocommunity.editing-support.conform-nvim" },
   -- Show context in virtual text (names of parents after children)
   { import = "astrocommunity.editing-support.nvim-context-vt" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
-  -- Vim-doge is a (Do)cumentation (Ge)nerator which will generate a proper documentation skeleton based on certain expressions (mainly functions). Simply put your cursor on a function, press <Leader>d, jump quickly through TODO items using <Tab> and <S-Tab> to quickly add descriptions and go on coding!
-  { import = "astrocommunity.editing-support.vim-doge" },
 
+  -- NOTE: lsp
   { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   -- textDocument/documentLink support
   { import = "astrocommunity.lsp.nvim-lsp-endhints" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
   -- Kill lsp servers and restore them automatically
   { import = "astrocommunity.lsp.garbage-day-nvim" },
-  -- Highlight diagnostic scope
-  { import = "astrocommunity.lsp.delimited-nvim" },
+  -- Highlight diagnostic scope (borked)
+  -- { import = "astrocommunity.lsp.delimited-nvim" },
   { import = "astrocommunity.lsp.actions-preview-nvim" },
+  { import = "astrocommunity.lsp.nvim-lint" },
 
+  -- NOTE: recipes
   { import = "astrocommunity.recipes.auto-session-restore" },
 
+  -- NOTE: remote development
   -- scp, sftp better support
   { import = "astrocommunity.remote-development.netman-nvim" },
 
+  -- NOTE: syntax
   -- Highlight arguments
   { import = "astrocommunity.syntax.hlargs-nvim" },
   -- Edit surroundings ([], {}, etc)
   { import = "astrocommunity.syntax.vim-sandwich" },
 
+  -- NOTE: utility
   -- open files with line numbers
   { import = "astrocommunity.utility.vim-fetch" },
   -- import/override with your plugins folder
