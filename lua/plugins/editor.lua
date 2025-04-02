@@ -323,4 +323,97 @@ return {
     },
   },
 
+  -- completion
+  {
+    "Saghen/blink.cmp",
+    version = "*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    keys = {
+      {
+        "<C-space>",
+        function()
+          require("blink.cmp").show()
+        end,
+        desc = "Blink",
+        mode = "i",
+      },
+    },
+    opts = {
+      snippets = { preset = "luasnip" },
+      keymap = {
+        preset = "enter",
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+      },
+      signature = { enabled = true, trigger = { show_on_insert = true } },
+      completion = {
+        list = {
+          max_items = 200,
+
+          selection = {
+            -- When `true`, will automatically select the first item in the completion list
+            preselect = true,
+            -- preselect = function(ctx) return vim.bo.filetype ~= 'markdown' end,
+
+            -- When `true`, inserts the completion item automatically when selecting it
+            -- You may want to bind a key to the `cancel` command (default <C-e>) when using this option,
+            -- which will both undo the selection and hide the completion menu
+            auto_insert = false,
+            -- auto_insert = function(ctx) return vim.bo.filetype ~= 'markdown' end
+          },
+
+          cycle = {
+            -- When `true`, calling `select_next` at the _bottom_ of the completion list
+            -- will select the _first_ completion item.
+            from_bottom = true,
+            -- When `true`, calling `select_prev` at the _top_ of the completion list
+            -- will select the _last_ completion item.
+            from_top = true,
+          },
+        },
+        trigger = {
+          -- When true, will prefetch the completion items when entering insert mode
+          prefetch_on_insert = true,
+
+          -- When false, will not show the completion window automatically when in a snippet
+          show_in_snippet = false,
+
+          -- When true, will show the completion window after typing any of alphanumerics, `-` or `_`
+          show_on_keyword = false,
+
+          -- When true, will show the completion window after typing a trigger character
+          show_on_trigger_character = false,
+
+          -- When both this and show_on_trigger_character are true, will show the completion window
+          -- when the cursor comes after a trigger character after accepting an item
+          show_on_accept_on_trigger_character = false,
+
+          -- When both this and show_on_trigger_character are true, will show the completion window
+          -- when the cursor comes after a trigger character when entering insert mode
+          show_on_insert_on_trigger_character = false,
+        },
+        accept = { auto_brackets = { enabled = true } },
+
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+        },
+      },
+      sources = {
+        default = { "lsp", "snippets" },
+        providers = {
+          lsp = {
+            transform_items = function(ctx, items)
+              -- Remove the "Text" source from lsp autocomplete
+              return vim.tbl_filter(function(item)
+                return item.kind ~= vim.lsp.protocol.CompletionItemKind.Text
+              end, items)
+            end,
+          },
+        },
+      },
+    },
+    dependencies = { "onsails/lspkind.nvim", "echasnovski/mini.snippets" },
+  },
 }
