@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.keymap.set("n", "<leader>ca", function()
+vim.keymap.set({ "n", "v" }, "<leader>ca", function()
   require("tiny-code-action").code_action()
 end, { noremap = true, silent = true })
 
@@ -338,12 +338,12 @@ end, { desc = "Signature Help" })
 map("i", "<c-k>", function()
   return vim.lsp.buf.signature_help()
 end, { desc = "Signature Help" })
-map(
-  { "n", "v" },
-  "<leader>ca",
-  vim.lsp.buf.code_action,
-  { desc = "Code Action" }
-)
+-- map(
+--   { "n", "v" },
+--   "<leader>ca",
+--   vim.lsp.buf.code_action,
+--   { desc = "Code Action" }
+-- )
 map({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" })
 map(
   "n",
