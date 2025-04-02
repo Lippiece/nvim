@@ -416,4 +416,30 @@ return {
     },
     dependencies = { "onsails/lspkind.nvim", "echasnovski/mini.snippets" },
   },
+
+  -- Highlight colors like rgb(255,0,200), #f12
+  {
+    "uga-rosa/ccc.nvim",
+    event = { "User AstroFile", "InsertEnter" },
+    cmd = {
+      "CccPick",
+      "CccConvert",
+      "CccHighlighterEnable",
+      "CccHighlighterDisable",
+      "CccHighlighterToggle",
+    },
+    opts = {
+      highlighter = {
+        auto_enable = true,
+        lsp = true,
+      },
+    },
+    config = function(_, opts)
+      require("ccc").setup(opts)
+      if opts.highlighter and opts.highlighter.auto_enable then
+        vim.cmd.CccHighlighterEnable()
+      end
+    end,
+  },
+
 }
