@@ -455,4 +455,11 @@ return {
     event = "LspAttach",
     opts = {},
   },
+
+  -- textDocument/documentLink support
+  {
+    "icholy/lsplinks.nvim",
+    lazy = true,
+    config = true,
+  },
 }
