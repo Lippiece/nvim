@@ -136,7 +136,10 @@ return {
   -- texinfo support
   { "https://github.com/HiPhish/info.vim", event = "BufEnter" },
   -- neovim in browser
-  { "glacambre/firenvim", build = ":call firenvim#install(0)" },
+  {
+    "glacambre/firenvim",
+    build = ":call firenvim#install(0)",
+  },
   -- JSDoc comments
   {
     "danymat/neogen",
@@ -254,8 +257,16 @@ return {
       { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
       { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
       { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-      { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-      { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+      {
+        "[B",
+        "<cmd>BufferLineMovePrev<cr>",
+        desc = "Move buffer prev",
+      },
+      {
+        "]B",
+        "<cmd>BufferLineMoveNext<cr>",
+        desc = "Move buffer next",
+      },
     },
     opts = {
       options = {
@@ -406,7 +417,11 @@ return {
             -- },
           },
           lualine_y = {
-            { "progress", separator = " ", padding = { left = 1, right = 0 } },
+            {
+              "progress",
+              separator = " ",
+              padding = { left = 1, right = 0 },
+            },
             { "location", padding = { left = 0, right = 1 } },
           },
           lualine_z = {
@@ -475,15 +490,15 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>sn", "", desc = "+noice"},
-      { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-      { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-      { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
-      { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-      { "<leader>snt", function() require("noice").cmd("pick") end, desc = "Noice Picker (Telescope/FzfLua)" },
-      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll Forward", mode = {"i", "n", "s"} },
-      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
+      { "<leader>sn",  "",                                                                            desc = "+noice" },
+      { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                              desc = "Redirect Cmdline" },
+      { "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
+      { "<leader>snh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
+      { "<leader>sna", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
+      { "<leader>snd", function() require("noice").cmd("dismiss") end,                                desc = "Dismiss All" },
+      { "<leader>snt", function() require("noice").cmd("pick") end,                                   desc = "Noice Picker (Telescope/FzfLua)" },
+      { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,                           expr = true,              desc = "Scroll Forward",  mode = { "i", "n", "s" } },
+      { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,                           expr = true,              desc = "Scroll Backward", mode = { "i", "n", "s" } },
     },
     config = function(_, opts)
       -- HACK: noice shows messages from before it was enabled,
@@ -534,14 +549,83 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>n", function()
-        if Snacks.config.picker and Snacks.config.picker.enabled then
-          Snacks.picker.notifications()
-        else
-          Snacks.notifier.show_history()
-        end
-      end, desc = "Notification History" },
+      {
+        "<leader>n",
+        function()
+          if Snacks.config.picker and Snacks.config.picker.enabled then
+            Snacks.picker.notifications()
+          else
+            Snacks.notifier.show_history()
+          end
+        end,
+        desc = "Notification History"
+      },
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+    },
+  },
+
+  -- run tasks
+  {
+    "stevearc/overseer.nvim",
+    cmd = {
+      "OverseerOpen",
+      "OverseerClose",
+      "OverseerToggle",
+      "OverseerSaveBundle",
+      "OverseerLoadBundle",
+      "OverseerDeleteBundle",
+      "OverseerRunCmd",
+      "OverseerRun",
+      "OverseerInfo",
+      "OverseerBuild",
+      "OverseerQuickAction",
+      "OverseerTaskAction",
+      "OverseerClearCache",
+    },
+    opts = {
+      dap = false,
+      task_list = {
+        bindings = {
+          ["<C-h>"] = false,
+          ["<C-j>"] = false,
+          ["<C-k>"] = false,
+          ["<C-l>"] = false,
+        },
+      },
+      form = {
+        win_opts = {
+          winblend = 0,
+        },
+      },
+      confirm = {
+        win_opts = {
+          winblend = 0,
+        },
+      },
+      task_win = {
+        win_opts = {
+          winblend = 0,
+        },
+      },
+    },
+    -- stylua: ignore
+    keys = {
+      { "<leader>ow", "<cmd>OverseerToggle<cr>",      desc = "Task list" },
+      { "<leader>oo", "<cmd>OverseerRun<cr>",         desc = "Run task" },
+      { "<leader>oq", "<cmd>OverseerQuickAction<cr>", desc = "Action recent task" },
+      { "<leader>oi", "<cmd>OverseerInfo<cr>",        desc = "Overseer Info" },
+      { "<leader>ob", "<cmd>OverseerBuild<cr>",       desc = "Task builder" },
+      { "<leader>ot", "<cmd>OverseerTaskAction<cr>",  desc = "Task action" },
+      { "<leader>oc", "<cmd>OverseerClearCache<cr>",  desc = "Clear cache" },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      spec = {
+        { "<leader>o", group = "overseer" },
+      },
     },
   },
 }
