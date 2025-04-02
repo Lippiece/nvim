@@ -108,13 +108,13 @@ return {
 
       local servers = opts.servers
       local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-      local has_blink, blink = pcall(require, "blink.cmp")
+      -- local has_blink, blink = pcall(require, "blink.cmp")
       local capabilities = vim.tbl_deep_extend(
         "force",
         {},
         vim.lsp.protocol.make_client_capabilities(),
         has_cmp and cmp_nvim_lsp.default_capabilities() or {},
-        has_blink and blink.get_lsp_capabilities() or {},
+        -- has_blink and blink.get_lsp_capabilities() or {},
         opts.capabilities or {}
       )
 
@@ -366,18 +366,19 @@ return {
   },
   {
     "stevearc/conform.nvim",
+    event = "BufEnter",
     opts = {
       default_format_opts = {
-        -- async = ,
+        async = true,
         ignore_errors = true,
         lsp_format = "first",
         timeout_ms = 5000,
       },
-      -- format_on_save = {
-      --   async = true,
-      --   ignore_errors = true,
-      --   lsp_format = "first",
-      -- },
+      format_after_save = {
+        async = true,
+        ignore_errors = true,
+        lsp_format = "first",
+      },
       formatters = {
         oxlint = {
           command = "oxlint",
@@ -436,7 +437,7 @@ return {
         python = { "isort", "black" },
         yaml = { "yamlfix" },
         fish = { "fish_indent" },
-        rust = { "rustfmt", lsp_format = "fallback" },
+        rust = { "rustfmt" },
         injected = { options = { ignore_errors = true } },
       },
     },
