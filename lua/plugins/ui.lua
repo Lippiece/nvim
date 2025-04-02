@@ -154,4 +154,11 @@ return {
     event = "VeryLazy",
     opts = {}, -- needed even when using default config
   },
+
+  -- Show virtual text after blocks containing their header text
+  {
+    "andersevenrud/nvim_context_vt",
+    event = "BufReadPost",
+    cmd = { "NvimContextVtToggle" },
+  },
 }
