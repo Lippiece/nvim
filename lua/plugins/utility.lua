@@ -113,15 +113,21 @@ return {
   "akinsho/git-conflict.nvim",
   -- Prettier code action
   {
-    "rachartier/tiny-code-action.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
+    "aznhe21/actions-preview.nvim",
+    lazy = true,
+    keys = {
+      {
+        "<Leader>ca",
+        function()
+          require("actions-preview").code_actions()
+        end,
+        desc = "LSP code action",
+        mode = { "n", "v" },
+      },
     },
-    event = "LspAttach",
-    config = function()
-      require("tiny-code-action").setup()
-    end,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
   },
   -- Free inactive LSPs
   {
