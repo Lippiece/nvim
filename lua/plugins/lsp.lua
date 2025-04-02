@@ -442,4 +442,17 @@ return {
       },
     },
   },
+
+  -- Reword TypeScript errors
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    lazy = true,
+    opts = {},
+  },
+  -- Display LSP inlay hints at the end of the line, rather than within the line.
+  {
+    "chrisgrieser/nvim-lsp-endhints",
+    event = "LspAttach",
+    opts = {},
+  },
 }
