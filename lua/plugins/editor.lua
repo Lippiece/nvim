@@ -290,4 +290,37 @@ return {
     end,
   },
 
+  -- List of nodes in a file
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { -- Example mapping to toggle outline
+      { "<leader>ce", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    opts = {
+      outline_window = {
+        position = "left",
+        show_numbers = true,
+        show_relative_numbers = true,
+        wrap = true,
+        focus_on_open = false,
+      },
+      preview_window = {
+        -- Automatically open preview of code location when navigating outline window
+        auto_preview = true,
+        -- Automatically open hover_symbol when opening preview (see keymaps for
+        -- hover_symbol).
+        -- If you disable this you can still open hover_symbol using your keymap
+        -- below.
+        open_hover_on_preview = true,
+        -- Pseudo-transparency of the preview window, see ':h winblend'
+        winblend = 30,
+        -- Experimental feature that let's you edit the source content live
+        -- in the preview window. Like VS Code's "peek editor".
+        live = true,
+      },
+    },
+  },
+
 }
