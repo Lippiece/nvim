@@ -15,6 +15,7 @@
 --   end,
 -- })
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  command = ":lua require('conform').format({async = true, lsp_format = 'first'})",
-})
+-- local create = vim.api.nvim_create_autocmd
+-- create({ "BufWritePost" }, {
+--   command = ":lua require('conform').format({async = true, lsp_format = 'first'})",
+-- })
