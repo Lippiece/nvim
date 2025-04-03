@@ -727,4 +727,16 @@ return {
     },
     opts = {},
   },
+
+  -- run tsc with usable results
+  { "dmmulroy/tsc.nvim", config = true },
+
+  -- Set buffer options like tabstop heuristically
+  { "tpope/vim-sleuth", config = true },
+
+  -- Tips for outdated npm packages
+  {
+    "vuki656/package-info.nvim",
+    config = true,
+  },
 }

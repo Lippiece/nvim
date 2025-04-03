@@ -100,4 +100,13 @@ return {
   },
 
   "jonsmithers/vim-html-template-literals",
+
+  -- Auto set commentstring
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = true,
+  },
+
+  -- auto set indent by parsing first 1000 lines
+  { "NMAC427/guess-indent.nvim", config = true },
 }
