@@ -301,15 +301,15 @@ return {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
         fish = { "fish" },
-        json = { "jsonlint" },
-        jsonc = { "jsonlint" },
-        javascript = { "oxlint" },
-        typescript = { "oxlint" },
-        typescriptreact = { "oxlint" },
-        javascriptreact = { "oxlint" },
-        astro = { "oxlint" },
-        svelte = { "oxlint" },
-        vue = { "oxlint" },
+        json = { "jsonlint", "eslint_d" },
+        jsonc = { "jsonlint", "eslint_d" },
+        javascript = { "oxlint", "eslint_d" },
+        typescript = { "oxlint", "eslint_d" },
+        typescriptreact = { "oxlint", "eslint_d" },
+        javascriptreact = { "oxlint", "eslint_d" },
+        astro = { "oxlint", "eslint_d" },
+        svelte = { "oxlint", "eslint_d" },
+        vue = { "oxlint", "eslint_d" },
         css = { "stylelint" },
         html = { "markuplint" },
         -- Use the "*" filetype to run linters on all filetypes.
@@ -417,13 +417,13 @@ return {
       default_format_opts = {
         async = true,
         ignore_errors = true,
-        lsp_format = "first",
+        lsp_format = "fallback",
         timeout_ms = 5000,
       },
       format_after_save = {
         async = true,
         ignore_errors = true,
-        lsp_format = "first",
+        lsp_format = "fallback",
       },
       formatters = {
         oxlint = {
@@ -476,7 +476,7 @@ return {
         svelte = { "prettierd", "biome-check", "oxlint", "eslint_d" },
         css = { "prettierd" },
         html = { "prettierd", "markuplint" },
-        json = { "biome-check", "fixjson" },
+        json = { "biome-check" },
         jsonc = { "biome-check" },
         nix = { "alejandra" },
         lua = { "stylua" },
@@ -505,7 +505,17 @@ return {
   -- textDocument/documentLink support
   {
     "icholy/lsplinks.nvim",
-    lazy = true,
+    event = "LspAttach",
     config = true,
+    keys = {
+      {
+        "gx",
+        mode = { "n" },
+        function()
+          require("lsplinks").gx()
+        end,
+        desc = "Open links",
+      },
+    },
   },
 }
