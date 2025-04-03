@@ -586,4 +586,10 @@ return {
       -- i.e. [Refactor] Inlined 3 variable occurrences
     },
   },
+
+  -- Surround
+  {
+    "machakann/vim-sandwich",
+    event = "VeryLazy",
+  },
 }

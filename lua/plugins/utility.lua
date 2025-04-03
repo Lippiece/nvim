@@ -634,4 +634,33 @@ return {
       },
     },
   },
+
+  -- scp, sftp better support
+  {
+    "miversen33/netman.nvim",
+    cmd = {
+      "NmloadProvider",
+      "Nmlogs",
+      "Nmdelete",
+      "Nmread",
+      "Nmwrite",
+    },
+    opts = {},
+    specs = {
+      {
+        "nvim-neo-tree/neo-tree.nvim",
+        dependencies = { "netman.nvim" },
+        optional = true,
+        opts = function(_, opts)
+          -- opts.sources = require("astrocore").list_insert_unique(opts.sources, { "netman.ui.neo-tree" })
+          table.insert(opts.sources, "netman.ui.neo-tree")
+
+          return opts
+        end,
+      },
+    },
+  },
+
+  -- Open files with line numbers
+  { "wsdjeg/vim-fetch", lazy = false },
 }
