@@ -1,5 +1,4 @@
 return {
-  { "yioneko/nvim-vtsls", event = "VeryLazy" },
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -54,7 +53,6 @@ return {
       --   timeout_ms = nil,
       -- },
       -- LSP Server Settings
-      ---@type lspconfig.options
       servers = {
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
@@ -206,47 +204,95 @@ return {
           Lua = {},
         },
       }
+
+      require("lspconfig").volar.setup {
+        init_options = {
+          vue = {
+            hybridMode = false,
+          },
+        },
+      }
     end,
   },
 
-  -- cmdline tools and lsp servers
   {
-
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    build = ":MasonUpdate",
-    opts_extend = { "ensure_installed" },
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shfmt",
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+        opts = {
+          ui = {
+            border = "single",
+            width = 0.9,
+          },
+        },
       },
+      { "williamboman/mason-lspconfig.nvim" },
     },
-    ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(_, opts)
-      require("mason").setup(opts)
-      local mr = require "mason-registry"
-      mr:on("package:install:success", function()
-        vim.defer_fn(function()
-          -- trigger FileType event to possibly load this newly installed LSP server
-          require("lazy.core.handler.event").trigger {
-            event = "FileType",
-            buf = vim.api.nvim_get_current_buf(),
-          }
-        end, 100)
-      end)
+      local has_blink, blink = pcall(require, "blink.cmp")
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        has_blink and blink.get_lsp_capabilities() or {},
+        opts.capabilities or {},
+        {
+          textDocument = {
+            foldingRange = {
+              dynamicRegistration = false,
+              lineFoldingOnly = true,
+            },
+          },
+        }
+      )
 
-      mr.refresh(function()
-        for _, tool in ipairs(opts.ensure_installed) do
-          local p = mr.get_package(tool)
-          if not p:is_installed() then
-            p:install()
-          end
-        end
-      end)
+      local lspconfig_defaults = require("lspconfig").util.default_config
+      lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+        "force",
+        lspconfig_defaults.capabilities,
+        capabilities
+      )
+
+      require("mason-lspconfig").setup {
+        automatic_installation = true,
+        ensure_installed = {
+          "lua_ls",
+          "volar",
+          "vtsls",
+        },
+        handlers = {
+          -- this first function is the "default handler"
+          -- it applies to every language server without a "custom handler"
+          function(ls)
+            if ls == "volar" then
+              require("lspconfig")[ls].setup {
+                filetypes = {
+                  "vue",
+                  "javascript",
+                  "javascriptreact",
+                  "typescript",
+                  "typescriptreact",
+                },
+                capabilities = capabilities,
+                init_options = {
+                  vue = {
+                    hybridMode = false,
+                  },
+                },
+              }
+              return
+            end
+
+            require("lspconfig")[ls].setup {
+              capabilities = capabilities,
+            }
+          end,
+        },
+      }
     end,
   },
+
+  { "yioneko/nvim-vtsls", event = "VeryLazy" },
+
   {
     "mfussenegger/nvim-lint",
     event = "BufEnter",
@@ -255,15 +301,15 @@ return {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
         fish = { "fish" },
-        json = { "biomejs", "jsonlint" },
-        jsonc = { "biomejs", "jsonlint" },
-        javascript = { "biomejs", "eslint_d", "oxlint" },
-        typescript = { "biomejs", "eslint_d", "oxlint" },
-        typescriptreact = { "biomejs", "eslint_d", "oxlint" },
-        javascriptreact = { "biomejs", "eslint_d", "oxlint" },
-        astro = { "biomejs", "eslint_d", "oxlint" },
-        svelte = { "biomejs", "eslint_d", "oxlint" },
-        vue = { "biomejs", "eslint_d", "oxlint" },
+        json = { "jsonlint" },
+        jsonc = { "jsonlint" },
+        javascript = { "oxlint" },
+        typescript = { "oxlint" },
+        typescriptreact = { "oxlint" },
+        javascriptreact = { "oxlint" },
+        astro = { "oxlint" },
+        svelte = { "oxlint" },
+        vue = { "oxlint" },
         css = { "stylelint" },
         html = { "markuplint" },
         -- Use the "*" filetype to run linters on all filetypes.
