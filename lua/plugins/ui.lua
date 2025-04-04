@@ -179,7 +179,15 @@ return {
           require("hover").hover()
         end,
         mode = "n",
-        { desc = "hover.nvim" },
+        desc = "hover.nvim",
+      },
+      {
+        "gK",
+        function()
+          require("hover").hover_select()
+        end,
+        mode = "n",
+        desc = "hover.nvim (select)",
       },
     },
     config = function()
