@@ -168,7 +168,7 @@ return {
   -- Better hover (K)
   {
     "lewis6991/hover.nvim",
-
+    event = "LspAttach",
     -- vim.keymap.set("n", "<C-n>", function()
     --   require("hover").hover_switch "next"
     -- end, { desc = "hover.nvim (next source)" })
