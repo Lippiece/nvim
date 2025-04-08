@@ -282,6 +282,16 @@ return {
               return
             end
 
+            if ls == "ts_ls" then
+              require("lspconfig")[ls].setup {
+                filetypes = {
+                  "svelte",
+                },
+                capabilities = capabilities,
+              }
+              return
+            end
+
             require("lspconfig")[ls].setup {
               capabilities = capabilities,
             }
