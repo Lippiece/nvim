@@ -214,7 +214,6 @@ return {
       }
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -267,10 +266,6 @@ return {
               require("lspconfig")[ls].setup {
                 filetypes = {
                   "vue",
-                  "javascript",
-                  "javascriptreact",
-                  "typescript",
-                  "typescriptreact",
                 },
                 capabilities = capabilities,
                 init_options = {
@@ -278,16 +273,6 @@ return {
                     hybridMode = false,
                   },
                 },
-              }
-              return
-            end
-
-            if ls == "ts_ls" then
-              require("lspconfig")[ls].setup {
-                filetypes = {
-                  "svelte",
-                },
-                capabilities = capabilities,
               }
               return
             end
