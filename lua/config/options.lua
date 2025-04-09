@@ -106,7 +106,7 @@ vim.o.scrolloff = 8
 
 if vim.g.neovide then
   vim.o.scrolloff = 15
-  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_opacity = 0.9
 
   -- vim.g.neovide_font_hinting = "none"
   -- vim.g.neovide_font_edging = "subpixelantialias"
