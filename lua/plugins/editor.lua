@@ -320,6 +320,8 @@ return {
         -- Experimental feature that let's you edit the source content live
         -- in the preview window. Like VS Code's "peek editor".
         live = true,
+        width = 15,
+        relative_width = true,
       },
     },
   },
