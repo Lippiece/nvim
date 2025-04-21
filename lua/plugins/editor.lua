@@ -609,4 +609,14 @@ return {
       end,
     },
   },
+
+  -- Open nvim in the same window/process
+  {
+    "samjwill/nvim-unception",
+    event = "VeryLazy",
+    init = function()
+      -- Optional settings go here!
+      -- e.g.) vim.g.unception_open_buffer_in_new_tab = true
+    end,
+  },
 }
