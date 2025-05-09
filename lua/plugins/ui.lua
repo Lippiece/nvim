@@ -125,6 +125,12 @@ return {
           },
         },
       },
+      lsp = {
+        hover = {
+          -- Set not show a message if hover is not available
+          silent = true,
+        },
+      },
     },
   },
   {
