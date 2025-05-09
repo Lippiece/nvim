@@ -133,7 +133,8 @@ return {
             return
           end
         end
-        require("lspconfig")[server].setup(server_opts)
+        -- require("lspconfig")[server].setup(server_opts)
+        vim.lsp.enable(server)
       end
 
       -- get all the servers that are available through mason-lspconfig
