@@ -72,7 +72,7 @@ return {
     opts = {},
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     cmd = {
       "MasonUpdateAll",
     },

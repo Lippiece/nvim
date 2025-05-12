@@ -5,7 +5,13 @@ return {
     event = "BufReadPre",
     dependencies = {
       "mason.nvim",
-      { "williamboman/mason-lspconfig.nvim", config = function() end },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+          automatic_enable = true,
+          automatic_installation = true,
+        },
+      },
     },
     opts = {
       -- options for vim.diagnostic.config()
@@ -219,7 +225,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         opts = {
           ui = {
             border = "single",
@@ -254,6 +260,7 @@ return {
 
       require("mason-lspconfig").setup {
         automatic_installation = true,
+        automatic_enable = true,
         ensure_installed = {
           "lua_ls",
           "volar",
