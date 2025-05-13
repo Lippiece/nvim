@@ -69,6 +69,47 @@ return {
         desc = "LSP code action",
         mode = { "n", "v" },
       },
+      {
+        "<Leader>cA",
+        function()
+          require("actions-preview").code_actions {
+            apply = true,
+            context = { only = { "source" }, diagnostics = {} },
+          }
+        end,
+        desc = "LSP source (file) action",
+        mode = { "n", "v" },
+      },
+      {
+        "<Leader>cM",
+        function()
+          require("actions-preview").code_actions {
+            apply = true,
+            context = {
+              only = { "source.addMissingImports.ts" },
+              diagnostics = {},
+            },
+          }
+        end,
+        desc = "Add missing imports",
+        mode = { "n", "v" },
+        ft = { "typescript", "javascript" },
+      },
+      {
+        "<Leader>cU",
+        function()
+          require("actions-preview").code_actions {
+            apply = true,
+            context = {
+              only = { "source.removeUnused.ts" },
+              diagnostics = {},
+            },
+          }
+        end,
+        desc = "Remove unused code",
+        mode = { "n", "v" },
+        ft = { "typescript", "javascript" },
+      },
     },
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -689,5 +730,12 @@ return {
   {
     "vuki656/package-info.nvim",
     config = true,
+  },
+
+  -- console.log constructor
+  {
+    "chrisgrieser/nvim-chainsaw",
+    event = "VeryLazy",
+    opts = {}, -- required even if left empty
   },
 }

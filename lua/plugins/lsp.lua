@@ -221,36 +221,16 @@ return {
         injected = { options = { ignore_errors = true } },
       },
     },
-
-    setup = function(conform, opts)
-      conform.setup(opts)
-
-      vim.api.nvim_create_user_command("FormatDisable", function(args)
-        if args.bang then
-          -- FormatDisable! will disable formatting just for this buffer
-          vim.b.disable_autoformat = true
-        else
-          vim.g.disable_autoformat = true
-        end
-      end, {
-        desc = "Disable autoformat-on-save",
-        bang = true,
-      })
-      vim.api.nvim_create_user_command("FormatEnable", function()
-        vim.b.disable_autoformat = false
-        vim.g.disable_autoformat = false
-      end, {
-        desc = "Re-enable autoformat-on-save",
-      })
-    end,
     keys = {
       {
         "<leader>uf",
         function()
           if vim.b.disable_autoformat then
             vim.b.disable_autoformat = false
+            vim.print "Enabled autoformat-on-save"
           else
             vim.b.disable_autoformat = true
+            vim.print "Disabled autoformat-on-save"
           end
         end,
         desc = "Toggle autoformat-on-save in buffer",
@@ -260,8 +240,10 @@ return {
         function()
           if vim.g.disable_autoformat then
             vim.g.disable_autoformat = false
+            vim.print "Enabled autoformat-on-save globally"
           else
             vim.g.disable_autoformat = true
+            vim.print "Disabled autoformat-on-save globally"
           end
         end,
         desc = "Toggle autoformat-on-save globally",
