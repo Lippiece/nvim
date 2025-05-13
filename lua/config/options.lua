@@ -184,8 +184,7 @@ vim.o.mouse = ""
 
 vim.diagnostic.config {
   severity_sort = true,
-  virtual_lines = true,
-  virtual_text = false,
+  virtual_text = true,
 }
 
 vim.g.autoformat = false

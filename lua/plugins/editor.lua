@@ -423,7 +423,7 @@ return {
   -- Highlight colors like rgb(255,0,200), #f12
   {
     "uga-rosa/ccc.nvim",
-    event = { "User AstroFile", "InsertEnter" },
+    lazy = false,
     cmd = {
       "CccPick",
       "CccConvert",
@@ -437,12 +437,6 @@ return {
         lsp = true,
       },
     },
-    config = function(_, opts)
-      require("ccc").setup(opts)
-      if opts.highlighter and opts.highlighter.auto_enable then
-        vim.cmd.CccHighlighterEnable()
-      end
-    end,
   },
 
   -- More commentstring support

@@ -157,7 +157,7 @@ return {
   },
   {
     "chrisgrieser/nvim-origami",
-    event = "VeryLazy",
+    event = "LspAttach",
     opts = {}, -- needed even when using default config
   },
 
@@ -169,7 +169,7 @@ return {
   },
 
   -- Show progress messages
-  { "j-hui/fidget.nvim", config = true },
+  -- { "j-hui/fidget.nvim", lazy = false, config = true },
 
   -- Better hover (K)
   {

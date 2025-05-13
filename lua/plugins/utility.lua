@@ -1,67 +1,15 @@
 return {
   {
-    -- {
-    --   "sourcegraph/sg.nvim",
-    --   dependencies = { "nvim-lua/plenary.nvim",
-    --     {
-    --       "hrsh7th/nvim-cmp",
-    --       opts = function(_, opts)
-    --         table.insert(opts.sources, {
-    --           name = "cody",
-    --         })
-    --       end
-    --     }
-    --   },
-    --
-    --   event = "VeryLazy",
-    --
-    --   config = function()
-    --     require("sg").setup({})
-    --
-    --     local cody = require("sg.cody.commands")
-    --
-    --     local map = function(mode, keys, func, desc)
-    --       if desc then
-    --         desc = "CODY: " .. desc
-    --       end
-    --       vim.keymap.set(mode, keys, func, { desc = desc })
-    --     end
-    --
-    --     map("n", "<leader>ac", function()
-    --       local request = {}
-    --       request.row, request.col = unpack(vim.api.nvim_win_get_cursor(0))
-    --       request.filename = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-    --       cody.autocomplete(request, function(data)
-    --         vim.print(data)
-    --       end)
-    --     end, "[a]sk cody to auto[c]omplete")
-    --   end,
-    -- },
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    opts = { options = vim.opt.sessionoptions:get() },
-    keys = {
-      {
-        "<leader>qs",
-        function()
-          require("persistence").load()
-        end,
-        desc = "Restore Session",
-      },
-      {
-        "<leader>ql",
-        function()
-          require("persistence").load { last = true }
-        end,
-        desc = "Restore Last Session",
-      },
-      {
-        "<leader>qd",
-        function()
-          require("persistence").stop()
-        end,
-        desc = "Don't Save Current Session",
-      },
+
+    "rmagatti/auto-session",
+    lazy = false,
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      cwd_change_handling = true,
+      -- log_level = 'debug',
     },
   },
   -- Nagging about how to use nvim
@@ -101,15 +49,12 @@ return {
     "chrisgrieser/nvim-various-textobjs",
   },
   -- Provides an explanation for regular expressions.
-  {
-    "tomiis4/Hypersonic.nvim",
-    event = "CmdlineEnter",
-    cmd = "Hypersonic",
-    config = function()
-      require("hypersonic").setup {}
-    end,
-    opts = {},
-  },
+  -- {
+  --   "tomiis4/Hypersonic.nvim",
+  --   event = "CmdlineEnter",
+  --   cmd = "Hypersonic",
+  --   opts = {},
+  -- },
   "akinsho/git-conflict.nvim",
   -- Prettier code action
   {
@@ -638,6 +583,7 @@ return {
   -- scp, sftp better support
   {
     "miversen33/netman.nvim",
+    lazy = true,
     cmd = {
       "NmloadProvider",
       "Nmlogs",
@@ -732,7 +678,12 @@ return {
   { "dmmulroy/tsc.nvim", config = true },
 
   -- Set buffer options like tabstop heuristically
-  { "tpope/vim-sleuth", config = true },
+  -- {
+  --   "tpope/vim-sleuth",
+  --   config = function()
+  --     require("vim-sleuth").setup()
+  --   end,
+  -- },
 
   -- Tips for outdated npm packages
   {
