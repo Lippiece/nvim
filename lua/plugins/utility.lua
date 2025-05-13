@@ -8,7 +8,6 @@ return {
     ---@type AutoSession.Config
     opts = {
       suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      cwd_change_handling = true,
       -- log_level = 'debug',
     },
   },
@@ -58,8 +57,66 @@ return {
   "akinsho/git-conflict.nvim",
   -- Prettier code action
   {
+    "Chaitanyabsprip/fastaction.nvim",
+    ---@type FastActionConfig
+    opts = {
+      title = false,
+    },
+    keys = {
+      {
+        "<Leader>ca",
+        function()
+          require("fastaction").code_action()
+        end,
+        desc = "LSP code action",
+        mode = { "n", "v" },
+      },
+      {
+        "<Leader>cA",
+        function()
+          require("fastaction").code_action {
+            apply = true,
+            context = { only = { "source" }, diagnostics = {} },
+          }
+        end,
+        desc = "LSP source (file) action",
+        mode = { "n", "v" },
+      },
+      {
+        "<Leader>cM",
+        function()
+          require("fastaction").code_action {
+            apply = true,
+            context = {
+              only = { "source.addMissingImports.ts" },
+              diagnostics = {},
+            },
+          }
+        end,
+        desc = "Add missing imports",
+        mode = { "n", "v" },
+        ft = { "typescript", "javascript" },
+      },
+      {
+        "<Leader>cU",
+        function()
+          require("fastaction").code_action {
+            apply = true,
+            context = {
+              only = { "source.removeUnused.ts" },
+              diagnostics = {},
+            },
+          }
+        end,
+        desc = "Remove unused code",
+        mode = { "n", "v" },
+        ft = { "typescript", "javascript" },
+      },
+    },
+  },
+  {
     "aznhe21/actions-preview.nvim",
-    lazy = true,
+    enabled = false,
     keys = {
       {
         "<Leader>ca",
@@ -737,5 +794,35 @@ return {
     "chrisgrieser/nvim-chainsaw",
     event = "VeryLazy",
     opts = {}, -- required even if left empty
+    keys = {
+      {
+        "<leader>rll",
+        function()
+          require("chainsaw").variableLog()
+        end,
+        desc = "Log the name & value of the variable under the cursor",
+      },
+      {
+        "<leader>rlo",
+        function()
+          require("chainsaw").objectLog()
+        end,
+        desc = "(Object) Log the name & value of the variable under the cursor",
+      },
+      {
+        "<leader>rlo",
+        function()
+          require("chainsaw").objectLog()
+        end,
+        desc = "(Object) Log the name & value of the variable under the cursor",
+      },
+      {
+        "<leader>rlc",
+        function()
+          require("chainsaw").removeLogs()
+        end,
+        desc = "Clear logs",
+      },
+    },
   },
 }
