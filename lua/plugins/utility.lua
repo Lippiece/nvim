@@ -14,7 +14,8 @@ return {
   -- Nagging about how to use nvim
   {
     "m4xshen/hardtime.nvim",
-    enabled = false,
+    -- enabled = false,
+    event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
   },
@@ -319,10 +320,14 @@ return {
     },
     opts = {
       options = {
-        -- stylua: ignore
-        close_command = function(n) Snacks.bufdelete(n) end,
-        -- stylua: ignore
-        right_mouse_command = function(n) Snacks.bufdelete(n) end,
+
+        close_command = function(n)
+          Snacks.bufdelete(n)
+        end,
+
+        right_mouse_command = function(n)
+          Snacks.bufdelete(n)
+        end,
         diagnostics = "nvim_lsp",
         always_show_bufferline = false,
         -- diagnostics_indicator = function(_, _, diag)
@@ -380,8 +385,6 @@ return {
       local lualine_require = require "lualine_require"
       lualine_require.require = require
 
-      -- local icons = LazyVim.config.icons
-
       vim.o.laststatus = vim.g.lualine_laststatus
 
       local opts = {
@@ -421,30 +424,50 @@ return {
             -- { LazyVim.lualine.pretty_path() },
           },
           lualine_x = {
-            Snacks.profiler.status(),
-            -- stylua: ignore
             {
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = function() return { fg = Snacks.util.color("Statement") } end,
+              function()
+                return require("noice").api.status.command.get()
+              end,
+              cond = function()
+                return package.loaded["noice"]
+                  and require("noice").api.status.command.has()
+              end,
+              color = function()
+                return { fg = Snacks.util.color "Statement" }
+              end,
             },
-            -- stylua: ignore
+
             {
-              function() return require("noice").api.status.mode.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = function() return { fg = Snacks.util.color("Constant") } end,
+              function()
+                return require("noice").api.status.mode.get()
+              end,
+              cond = function()
+                return package.loaded["noice"]
+                  and require("noice").api.status.mode.has()
+              end,
+              color = function()
+                return { fg = Snacks.util.color "Constant" }
+              end,
             },
-            -- stylua: ignore
+
             {
-              function() return "  " .. require("dap").status() end,
-              cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-              color = function() return { fg = Snacks.util.color("Debug") } end,
+              function()
+                return "  " .. require("dap").status()
+              end,
+              cond = function()
+                return package.loaded["dap"] and require("dap").status() ~= ""
+              end,
+              color = function()
+                return { fg = Snacks.util.color "Debug" }
+              end,
             },
-            -- stylua: ignore
+
             {
               require("lazy.status").updates,
               cond = require("lazy.status").has_updates,
-              color = function() return { fg = Snacks.util.color("Special") } end,
+              color = function()
+                return { fg = Snacks.util.color "Special" }
+              end,
             },
             -- {
             --   'diff',
@@ -472,11 +495,6 @@ return {
               padding = { left = 1, right = 0 },
             },
             { "location", padding = { left = 0, right = 1 } },
-          },
-          lualine_z = {
-            function()
-              return " " .. os.date "%R"
-            end,
           },
         },
         extensions = { "neo-tree", "lazy", "fzf" },
@@ -537,17 +555,80 @@ return {
         long_message_to_split = true,
       },
     },
-    -- stylua: ignore
+
     keys = {
-      { "<leader>sn",  "",                                                                            desc = "+noice" },
-      { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                              desc = "Redirect Cmdline" },
-      { "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
-      { "<leader>snh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
-      { "<leader>sna", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
-      { "<leader>snd", function() require("noice").cmd("dismiss") end,                                desc = "Dismiss All" },
-      { "<leader>snt", function() require("noice").cmd("pick") end,                                   desc = "Noice Picker (Telescope/FzfLua)" },
-      { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,                           expr = true,              desc = "Scroll Forward",  mode = { "i", "n", "s" } },
-      { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,                           expr = true,              desc = "Scroll Backward", mode = { "i", "n", "s" } },
+      {
+        "<leader>sn",
+        "",
+        desc = "+noice",
+      },
+      {
+        "<S-Enter>",
+        function()
+          require("noice").redirect(vim.fn.getcmdline())
+        end,
+        mode = "c",
+        desc = "Redirect Cmdline",
+      },
+      {
+        "<leader>snl",
+        function()
+          require("noice").cmd "last"
+        end,
+        desc = "Noice Last Message",
+      },
+      {
+        "<leader>snh",
+        function()
+          require("noice").cmd "history"
+        end,
+        desc = "Noice History",
+      },
+      {
+        "<leader>sna",
+        function()
+          require("noice").cmd "all"
+        end,
+        desc = "Noice All",
+      },
+      {
+        "<leader>snd",
+        function()
+          require("noice").cmd "dismiss"
+        end,
+        desc = "Dismiss All",
+      },
+      {
+        "<leader>snt",
+        function()
+          require("noice").cmd "pick"
+        end,
+        desc = "Noice Picker (Telescope/FzfLua)",
+      },
+      {
+        "<c-f>",
+        function()
+          if not require("noice.lsp").scroll(4) then
+            return "<c-f>"
+          end
+        end,
+        silent = true,
+        expr = true,
+        desc = "Scroll Forward",
+        mode = { "i", "n", "s" },
+      },
+      {
+        "<c-b>",
+        function()
+          if not require("noice.lsp").scroll(-4) then
+            return "<c-b>"
+          end
+        end,
+        silent = true,
+        expr = true,
+        desc = "Scroll Backward",
+        mode = { "i", "n", "s" },
+      },
     },
     config = function(_, opts)
       -- HACK: noice shows messages from before it was enabled,
@@ -596,7 +677,6 @@ return {
       toggle = { map = vim.keymap.set },
       words = { enabled = true },
     },
-    -- stylua: ignore
     keys = {
       {
         "<leader>n",
@@ -607,9 +687,15 @@ return {
             Snacks.notifier.show_history()
           end
         end,
-        desc = "Notification History"
+        desc = "Notification History",
       },
-      { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+      {
+        "<leader>un",
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = "Dismiss All Notifications",
+      },
     },
   },
 
@@ -657,15 +743,19 @@ return {
         },
       },
     },
-    -- stylua: ignore
+
     keys = {
-      { "<leader>ow", "<cmd>OverseerToggle<cr>",      desc = "Task list" },
-      { "<leader>oo", "<cmd>OverseerRun<cr>",         desc = "Run task" },
-      { "<leader>oq", "<cmd>OverseerQuickAction<cr>", desc = "Action recent task" },
-      { "<leader>oi", "<cmd>OverseerInfo<cr>",        desc = "Overseer Info" },
-      { "<leader>ob", "<cmd>OverseerBuild<cr>",       desc = "Task builder" },
-      { "<leader>ot", "<cmd>OverseerTaskAction<cr>",  desc = "Task action" },
-      { "<leader>oc", "<cmd>OverseerClearCache<cr>",  desc = "Clear cache" },
+      { "<leader>ow", "<cmd>OverseerToggle<cr>", desc = "Task list" },
+      { "<leader>oo", "<cmd>OverseerRun<cr>", desc = "Run task" },
+      {
+        "<leader>oq",
+        "<cmd>OverseerQuickAction<cr>",
+        desc = "Action recent task",
+      },
+      { "<leader>oi", "<cmd>OverseerInfo<cr>", desc = "Overseer Info" },
+      { "<leader>ob", "<cmd>OverseerBuild<cr>", desc = "Task builder" },
+      { "<leader>ot", "<cmd>OverseerTaskAction<cr>", desc = "Task action" },
+      { "<leader>oc", "<cmd>OverseerClearCache<cr>", desc = "Clear cache" },
     },
   },
   {
@@ -773,7 +863,13 @@ return {
   },
 
   -- run tsc with usable results
-  { "dmmulroy/tsc.nvim", config = true },
+  {
+    "dmmulroy/tsc.nvim",
+    cmd = "TSC",
+    opts = {
+      use_trouble_qflist = true,
+    },
+  },
 
   -- Set buffer options like tabstop heuristically
   -- {

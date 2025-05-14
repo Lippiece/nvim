@@ -1,30 +1,50 @@
 return {
   -- lspconfig
-  { "mason-org/mason.nvim", lazy = false, opts = {} },
+  { "mason-org/mason.nvim", cmd = "Mason", opts = {} },
   {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      "neovim/nvim-lspconfig",
-      config = function()
-        require("mason-lspconfig").setup {}
+      {
+        "neovim/nvim-lspconfig",
+        config = function()
+          require("mason-lspconfig").setup {}
+          local lspconfig = require "lspconfig"
 
-        vim.lsp.config("volar", {
-          -- add filetypes for typescript, javascript and vue
-          filetypes = {
-            "typescript",
-            "javascript",
-            "javascriptreact",
-            "typescriptreact",
-            "vue",
-          },
-          init_options = {
-            vue = {
-              -- disable hybrid mode
-              hybridMode = false,
+          vim.lsp.config("volar", {
+            root_markers = { "app.vue" },
+            init_options = {
+              vue = {
+                -- disable hybrid mode
+                hybridMode = false,
+              },
             },
-          },
-        })
-      end,
+          })
+
+          vim.lsp.config["emmet_language_server"] = {
+            filetypes = { "html", "css", "vue", "svelte", "astro" },
+            settings = {
+              preferences = {
+                css = { intUnit = "asd" },
+                lorem = { omitCommonPart = true, defaultLang = "ru" },
+              },
+              css = { intUnit = "asd" },
+              lorem = { omitCommonPart = true, defaultLang = "ru" },
+            },
+            preferences = {
+              css = { intUnit = "asd" },
+              lorem = { omitCommonPart = true, defaultLang = "ru" },
+            },
+            init_options = {
+              css = { intUnit = "asd" },
+              lorem = { omitCommonPart = true, defaultLang = "ru" },
+              preferences = {
+                css = { intUnit = "asd" },
+                lorem = { omitCommonPart = true, defaultLang = "ru" },
+              },
+            },
+          }
+        end,
+      },
     },
     lazy = false,
     opts = {

@@ -84,7 +84,7 @@ opt.virtualedit = "block" -- Allow cursor to move where there is no text in visu
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 
-opt.smoothscroll = true
+-- opt.smoothscroll = true
 opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
 opt.foldmethod = "expr"
 opt.foldtext = ""
@@ -103,42 +103,20 @@ vim.o.guifont = "0xProto Nerd Font Mono:h10"
 
 -- Scroll offsets
 vim.o.scrolloff = 8
+opt.scrolloff = 8
 
 if vim.g.neovide then
   vim.o.scrolloff = 15
+  opt.scrolloff = 15
   vim.g.neovide_opacity = 0.9
 
   -- vim.g.neovide_font_hinting = "none"
   -- vim.g.neovide_font_edging = "subpixelantialias"
 
-  vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
-  vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
+  -- vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
+  -- vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
   vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
   vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli') -- Paste insert mode
-  vim.api.nvim_set_keymap(
-    "",
-    "<C-v>",
-    "+p<CR>",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "!",
-    "<C-v>",
-    "<C-R>+",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "t",
-    "<C-v>",
-    "<C-R>+",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "v",
-    "<C-v>",
-    "<C-R>+",
-    { noremap = true, silent = true }
-  )
 end
 
 vim.o.wildmenu = true
