@@ -11,10 +11,10 @@ return {
       -- log_level = 'debug',
     },
   },
-  -- Nagging about how to use nvim
+  -- Nagging about how to use nvim (hjkl only)
   {
     "m4xshen/hardtime.nvim",
-    -- enabled = false,
+    enabled = false,
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
