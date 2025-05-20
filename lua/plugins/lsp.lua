@@ -226,7 +226,6 @@ return {
           args = {
             "check",
             "--write",
-            "--fix",
             "--unsafe",
             "--stdin-file-path",
             "$FILENAME",
