@@ -62,6 +62,7 @@ return {
     ---@type FastActionConfig
     opts = {
       title = false,
+      dismiss_keys = { "<c-c>", "j", "k", "h", "l" },
     },
     keys = {
       {

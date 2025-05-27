@@ -10,7 +10,7 @@ return {
           require("mason-lspconfig").setup {}
           local lspconfig = require "lspconfig"
 
-          vim.lsp.config("volar", {
+          vim.lsp.config("vue_ls", {
             root_markers = { "app.vue" },
             init_options = {
               vue = {
