@@ -249,7 +249,7 @@ return {
         nix = { "alejandra" },
         lua = { "stylua" },
         python = { "isort", "black" },
-        yaml = { "yamlfix" },
+        yaml = { "yamlfmt" },
         fish = { "fish_indent" },
         rust = { "rustfmt" },
         injected = { options = { ignore_errors = true } },
