@@ -62,7 +62,6 @@ return {
     ---@type FastActionConfig
     opts = {
       title = false,
-      dismiss_keys = { "<c-c>", "j", "k", "h", "l" },
     },
     keys = {
       {
@@ -83,36 +82,6 @@ return {
         end,
         desc = "LSP source (file) action",
         mode = { "n", "v" },
-      },
-      {
-        "<Leader>cM",
-        function()
-          require("fastaction").code_action {
-            apply = true,
-            context = {
-              only = { "source.addMissingImports.ts" },
-              diagnostics = {},
-            },
-          }
-        end,
-        desc = "Add missing imports",
-        mode = { "n", "v" },
-        ft = { "typescript", "javascript" },
-      },
-      {
-        "<Leader>cU",
-        function()
-          require("fastaction").code_action {
-            apply = true,
-            context = {
-              only = { "source.removeUnused.ts" },
-              diagnostics = {},
-            },
-          }
-        end,
-        desc = "Remove unused code",
-        mode = { "n", "v" },
-        ft = { "typescript", "javascript" },
       },
     },
   },

@@ -314,6 +314,23 @@ map("n", "<leader>cR", function()
   Snacks.rename.rename_file()
 end, { desc = "Rename File" })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "<Leader>cM", function()
+  vim.lsp.buf.code_action {
+    apply = true,
+    context = { only = { "source.addMissingImports.ts" }, diagnostics = {} },
+  }
+end, {
+  desc = "Remove unused code",
+})
+map("n", "<Leader>cu", function()
+  vim.lsp.buf.code_action {
+    apply = true,
+    context = { only = { "source.removeUnused.ts" }, diagnostics = {} },
+  }
+end, {
+  desc = "Remove unused code",
+})
+
 map("n", "]]", function()
   Snacks.words.jump(vim.v.count1)
 end, {
