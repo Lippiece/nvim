@@ -140,26 +140,26 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 -- location list
-map("n", "<leader>xl", function()
-  local success, err = pcall(
-    vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose
-      or vim.cmd.lopen
-  )
-  if not success and err then
-    vim.notify(err, vim.log.levels.ERROR)
-  end
-end, { desc = "Location List" })
+-- map("n", "<leader>xl", function()
+--   local success, err = pcall(
+--     vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose
+--       or vim.cmd.lopen
+--   )
+--   if not success and err then
+--     vim.notify(err, vim.log.levels.ERROR)
+--   end
+-- end, { desc = "Location List" })
 
 -- quickfix list
-map("n", "<leader>xq", function()
-  local success, err = pcall(
-    vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose
-      or vim.cmd.copen
-  )
-  if not success and err then
-    vim.notify(err, vim.log.levels.ERROR)
-  end
-end, { desc = "Quickfix List" })
+-- map("n", "<leader>xq", function()
+--   local success, err = pcall(
+--     vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose
+--       or vim.cmd.copen
+--   )
+--   if not success and err then
+--     vim.notify(err, vim.log.levels.ERROR)
+--   end
+-- end, { desc = "Quickfix List" })
 
 map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
@@ -189,7 +189,6 @@ map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 Snacks.toggle.option("spell", { name = "Spelling" }):map "<leader>us"
-Snacks.toggle.option("wrap", { name = "Wrap" }):map "<leader>uw"
 Snacks.toggle
   .option("relativenumber", { name = "Relative Number" })
   :map "<leader>uL"
@@ -320,7 +319,7 @@ map("n", "<Leader>cM", function()
     context = { only = { "source.addMissingImports.ts" }, diagnostics = {} },
   }
 end, {
-  desc = "Remove unused code",
+  desc = "Add missing imports",
 })
 map("n", "<Leader>cu", function()
   vim.lsp.buf.code_action {
@@ -329,6 +328,11 @@ map("n", "<Leader>cu", function()
   }
 end, {
   desc = "Remove unused code",
+})
+map("n", "<Leader>cf", function()
+  require("conform").format()
+end, {
+  desc = "Format file",
 })
 
 map("n", "]]", function()
