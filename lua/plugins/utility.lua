@@ -861,12 +861,11 @@ return {
   },
 
   -- Set buffer options like tabstop heuristically
-  -- {
-  --   "tpope/vim-sleuth",
-  --   config = function()
-  --     require("vim-sleuth").setup()
-  --   end,
-  -- },
+  {
+    "NMAC427/guess-indent.nvim",
+    event = "BufRead",
+    opts = {},
+  },
 
   -- Tips for outdated npm packages
   {
