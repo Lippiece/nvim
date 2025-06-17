@@ -7,11 +7,15 @@ return {
       {
         "neovim/nvim-lspconfig",
         config = function()
-          require("mason-lspconfig").setup {}
-          local lspconfig = require "lspconfig"
-
           vim.lsp.config("vue_ls", {
-            root_markers = { "app.vue" },
+            -- add filetypes for typescript, javascript and vue
+            filetypes = {
+              "typescript",
+              "javascript",
+              "javascriptreact",
+              "typescriptreact",
+              "vue",
+            },
             init_options = {
               vue = {
                 -- disable hybrid mode
@@ -20,29 +24,7 @@ return {
             },
           })
 
-          vim.lsp.config["emmet_language_server"] = {
-            filetypes = { "html", "css", "vue", "svelte", "astro" },
-            settings = {
-              preferences = {
-                css = { intUnit = "asd" },
-                lorem = { omitCommonPart = true, defaultLang = "ru" },
-              },
-              css = { intUnit = "asd" },
-              lorem = { omitCommonPart = true, defaultLang = "ru" },
-            },
-            preferences = {
-              css = { intUnit = "asd" },
-              lorem = { omitCommonPart = true, defaultLang = "ru" },
-            },
-            init_options = {
-              css = { intUnit = "asd" },
-              lorem = { omitCommonPart = true, defaultLang = "ru" },
-              preferences = {
-                css = { intUnit = "asd" },
-                lorem = { omitCommonPart = true, defaultLang = "ru" },
-              },
-            },
-          }
+          require("mason-lspconfig").setup {}
         end,
       },
     },
