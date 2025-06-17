@@ -251,22 +251,22 @@ return {
           },
         },
       },
-      event_handlers = {
-        -- open and close outline instead of neotree
-        {
-          event = "neo_tree_window_before_open",
-          handler = function(_)
-            vim.cmd "OutlineClose"
-          end,
-        },
-        {
-
-          event = "neo_tree_window_after_close",
-          handler = function(_)
-            vim.cmd "OutlineOpen"
-          end,
-        },
-      },
+      -- event_handlers = {
+      --   -- open and close outline instead of neotree
+      --   {
+      --     event = "neo_tree_window_before_open",
+      --     handler = function(_)
+      --       vim.cmd "OutlineClose"
+      --     end,
+      --   },
+      --   {
+      --
+      --     event = "neo_tree_window_after_close",
+      --     handler = function(_)
+      --       vim.cmd "OutlineOpen"
+      --     end,
+      --   },
+      -- },
     },
     config = function(_, opts)
       local function on_move(data)
