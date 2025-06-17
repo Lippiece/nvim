@@ -7,24 +7,35 @@ return {
       {
         "neovim/nvim-lspconfig",
         config = function()
-          vim.lsp.config("vue_ls", {
-            -- add filetypes for typescript, javascript and vue
+          require("mason-lspconfig").setup {}
+
+          vim.lsp.config["vue_ls"] = {
             filetypes = {
-              "typescript",
+              "vue",
               "javascript",
               "javascriptreact",
+              "typescript",
               "typescriptreact",
-              "vue",
             },
+            root_markers = { "app.vue", "src/app.vue" },
             init_options = {
               vue = {
-                -- disable hybrid mode
                 hybridMode = false,
               },
             },
-          })
+            -- stop vtsls
+            on_attach = function()
+              vim.lsp.stop_client(vim.lsp.get_clients { name = "vtsls" })
+            end,
+          }
 
-          require("mason-lspconfig").setup {}
+          vim.lsp.config["vtsls"] = {
+            on_attach = function(client)
+              if vim.lsp.get_clients({ name = "vue_ls" })[1] then
+                vim.lsp.stop_client(client.id)
+              end
+            end,
+          }
         end,
       },
     },
