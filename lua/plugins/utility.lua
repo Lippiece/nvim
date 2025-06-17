@@ -731,6 +731,17 @@ return {
           winblend = 0,
         },
       },
+
+      component_aliases = {
+        default = {
+          { "display_duration", detail_level = 2 },
+          "on_output_summarize",
+          "on_exit_set_status",
+          "on_complete_notify",
+          "on_result_diagnostics",
+          { "on_result_diagnostics_quickfix", open = true },
+        },
+      },
     },
 
     keys = {
@@ -857,6 +868,26 @@ return {
     cmd = "TSC",
     opts = {
       use_trouble_qflist = true,
+    },
+    keys = {
+      {
+        "<leader>tt",
+        function()
+          require("tsc").run()
+        end,
+        desc = "TSC",
+      },
+      {
+        "<leader>tv",
+        function()
+          require("tsc").setup {
+            use_trouble_qflist = true,
+            bin_path = "node_modules/.bin/vue-tsc",
+          }
+          require("tsc").run()
+        end,
+        desc = "TSC (vue)",
+      },
     },
   },
 
