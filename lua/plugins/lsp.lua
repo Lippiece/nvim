@@ -9,33 +9,63 @@ return {
         config = function()
           require("mason-lspconfig").setup {}
 
-          vim.lsp.config["vue_ls"] = {
+          --
+          -- Vue
+          --
+          vim.lsp.config("vtsls", {
             filetypes = {
-              "vue",
+              "typescript",
               "javascript",
               "javascriptreact",
-              "typescript",
               "typescriptreact",
+              "vue",
             },
-            root_markers = { "app.vue", "src/app.vue" },
-            init_options = {
-              vue = {
-                hybridMode = false,
+            settings = {
+              vtsls = {
+                tsserver = {
+                  globalPlugins = {
+                    {
+                      name = "@vue/typescript-plugin",
+                      languages = { "vue" },
+                      configNamespace = "typescript",
+                      location = vim.fn.stdpath "data"
+                        .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                    },
+                  },
+                },
               },
             },
-            -- stop vtsls
-            on_attach = function()
-              vim.lsp.stop_client(vim.lsp.get_clients { name = "vtsls" })
-            end,
-          }
-
-          vim.lsp.config["vtsls"] = {
-            on_attach = function(client)
-              if vim.lsp.get_clients({ name = "vue_ls" })[1] then
-                vim.lsp.stop_client(client.id)
+          })
+          vim.lsp.config("vue_ls", {
+            on_init = function(client)
+              client.handlers["tsserver/request"] = function(_, result, context)
+                local clients =
+                  vim.lsp.get_clients { bufnr = context.bufnr, name = "vtsls" }
+                if #clients == 0 then
+                  vim.notify(
+                    "Could not found `vtsls` lsp client, vue_lsp would not work without it.",
+                    vim.log.levels.ERROR
+                  )
+                  return
+                end
+                local ts_client = clients[1]
+                local param = unpack(result)
+                local id, command, payload = unpack(param)
+                ts_client:exec_cmd({
+                  title = "vue_request_forward",
+                  command = "typescript.tsserverRequest",
+                  arguments = {
+                    command,
+                    payload,
+                  },
+                }, { bufnr = context.bufnr }, function(_, r)
+                  local response_data = { { id, r.body } }
+                  ---@diagnostic disable-next-line: param-type-mismatch
+                  client:notify("tsserver/response", response_data)
+                end)
               end
             end,
-          }
+          })
         end,
       },
     },
