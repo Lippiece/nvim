@@ -119,7 +119,6 @@ return {
   },
   {
     "folke/noice.nvim",
-    enabled = false,
     opts = {
       routes = {
         {
