@@ -118,28 +118,6 @@ return {
     end,
   },
   {
-    "folke/noice.nvim",
-    opts = {
-      routes = {
-        {
-          filter = {
-            event = "notify",
-            find = "No information available",
-          },
-          opts = {
-            skip = true,
-          },
-        },
-      },
-      lsp = {
-        hover = {
-          -- Set not show a message if hover is not available
-          silent = true,
-        },
-      },
-    },
-  },
-  {
     "L3MON4D3/LuaSnip",
     build = "make install_jsregexp",
   },
