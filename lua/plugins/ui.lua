@@ -229,15 +229,19 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
-        routes = {
-          {
-            filter = {
-              event = "notify",
-              find = "No information available",
-            },
-            opts = {
-              skip = true,
-            },
+        hover = {
+          -- Set not show a message if hover is not available
+          silent = true,
+        },
+      },
+      routes = {
+        {
+          filter = {
+            event = "notify",
+            find = "No information available",
+          },
+          opts = {
+            skip = true,
           },
         },
       },
