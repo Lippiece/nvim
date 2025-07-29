@@ -415,32 +415,6 @@ return {
           lualine_x = {
             {
               function()
-                return require("noice").api.status.command.get()
-              end,
-              cond = function()
-                return package.loaded["noice"]
-                  and require("noice").api.status.command.has()
-              end,
-              color = function()
-                return { fg = Snacks.util.color "Statement" }
-              end,
-            },
-
-            {
-              function()
-                return require("noice").api.status.mode.get()
-              end,
-              cond = function()
-                return package.loaded["noice"]
-                  and require("noice").api.status.mode.has()
-              end,
-              color = function()
-                return { fg = Snacks.util.color "Constant" }
-              end,
-            },
-
-            {
-              function()
                 return "  " .. require("dap").status()
               end,
               cond = function()
@@ -458,24 +432,6 @@ return {
                 return { fg = Snacks.util.color "Special" }
               end,
             },
-            -- {
-            --   'diff',
-            --   symbols = {
-            --     added = icons.git.added,
-            --     modified = icons.git.modified,
-            --     removed = icons.git.removed,
-            --   },
-            --   source = function()
-            --     local gitsigns = vim.b.gitsigns_status_dict
-            --     if gitsigns then
-            --       return {
-            --         added = gitsigns.added,
-            --         modified = gitsigns.changed,
-            --         removed = gitsigns.removed,
-            --       }
-            --     end
-            --   end,
-            -- },
           },
           lualine_y = {
             {
