@@ -78,7 +78,7 @@ return {
 
   -- Auto cd etc
   {
-    "ahmedkhalf/project.nvim",
+    "DrKJeff16/project.nvim",
     opts = {
       sync_root_with_cwd = true,
       respect_buf_cwd = true,
