@@ -87,7 +87,7 @@ return {
         update_root = true,
       },
       silent_chdir = false,
-      ignore_lsp = { "biome", "emmet_ls" },
+      ignore_lsp = { "biome", "emmet_ls", "oxlint" },
     },
     event = "VeryLazy",
     config = function(_, opts)
