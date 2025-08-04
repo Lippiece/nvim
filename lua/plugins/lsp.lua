@@ -73,8 +73,17 @@ return {
     opts = {
       handlers = {
         function(server_name)
+          if server_name == "oxlint" then
+            return
+          end
+
           vim.lsp.enable(server_name)
         end,
+        automatic_enable = {
+          exclude = {
+            "oxlint",
+          },
+        },
       },
     },
   },
