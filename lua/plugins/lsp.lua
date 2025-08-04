@@ -254,6 +254,23 @@ return {
             "$FILENAME",
           },
           stdin = true,
+          cwd = function()
+            local util = require "conform.util"
+
+            util.root_file {
+              "biome.json",
+              "biome.jsonc",
+            }
+          end,
+        },
+        prettier_custom = {
+          command = "prettier",
+          args = {
+            "--write",
+            "--stdin-filepath",
+            "$FILENAME",
+          },
+          stdin = true,
         },
       },
       formatters_by_ft = {
@@ -262,7 +279,7 @@ return {
         typescript = { "biome_check", "oxlint", "eslint_d" },
         javascriptreact = { "biome_check", "oxlint", "eslint_d" },
         typescriptreact = { "biome_check", "oxlint", "eslint_d" },
-        astro = { "prettier", "biome_check", "oxlint" },
+        astro = { "prettier_custom", "biome_check", "oxlint" },
         vue = { "prettier", "biome_check", "oxlint", "eslint_d" },
         svelte = { "prettier", "biome_check", "oxlint", "eslint_d" },
         css = { "prettier" },
