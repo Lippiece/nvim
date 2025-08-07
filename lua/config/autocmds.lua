@@ -19,3 +19,8 @@ local create = vim.api.nvim_create_autocmd
 -- create({ "BufWritePost" }, {
 --   command = ":lua require('conform').format({async = true, lsp_format = 'first'})",
 -- })
+
+-- Set default keyboard layout on leaving insert mode
+create({ "InsertLeave" }, {
+  command = "silent !qdbus org.kde.keyboard /Layouts setLayout 0",
+})
