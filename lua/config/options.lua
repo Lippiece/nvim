@@ -85,7 +85,7 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 
 -- opt.smoothscroll = true
--- opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
 opt.foldmethod = "expr"
 opt.foldtext = ""
 
@@ -146,7 +146,7 @@ vim.o.wrap = true
 -- 	set nocp                    " 'compatible' is not set
 -- 	filetype plugin on          " plugins are enabled
 
--- i18n
+-- :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;ABCDEFGHIJKLMNOPQRSTUVWXYZ
 vim.o.langmap =
   "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
