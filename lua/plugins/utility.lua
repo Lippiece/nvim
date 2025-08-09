@@ -8,7 +8,8 @@ return {
     ---@type AutoSession.Config
     opts = {
       suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      -- log_level = 'debug',
+      args_allow_single_directory = false, -- Follow normal session save/load logic if launched with a single directory as the only argument
+      purge_after_minutes = 43200, -- (30 days) Sessions older than purge_after_minutes will be deleted asynchronously on startup, e.g. set to 14400 to delete sessions that haven't been accessed for more than 10 days, defaults to off (no purging), requires >= nvim 0.10
     },
   },
   -- Nagging about how to use nvim (hjkl only)
