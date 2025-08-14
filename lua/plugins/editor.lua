@@ -86,7 +86,7 @@ return {
         enable = true,
         update_root = true,
       },
-      silent_chdir = false,
+      silent_chdir = true,
       ignore_lsp = { "biome", "emmet_ls", "oxlint" },
     },
     event = "VeryLazy",
